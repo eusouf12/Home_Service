@@ -15,6 +15,10 @@ class AppIcons {
   static const String file= "$basePath/file.svg";
   static const String filter= "$basePath/filter.svg";
 
+  //========== Home Service =========
+  static const String newLogo = "$basePath/newLogo.png";
+  static const String appBar = "$basePath/appBar.svg";
+
 
 
 

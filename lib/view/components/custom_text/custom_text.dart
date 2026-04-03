@@ -44,7 +44,7 @@ class CustomText extends StatelessWidget {
         text,
         maxLines: maxLines,
         overflow: overflow,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.manrope(
           fontSize: fontSize.w,
           fontWeight: fontWeight,
           color: color,
