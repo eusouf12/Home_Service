@@ -8,20 +8,22 @@ import '../../components/custom_image/custom_image.dart';
 import '../../components/custom_text/custom_text.dart';
 import '../../components/custom_text_field/custom_text_field.dart';
 import 'home_controller.dart';
+import 'widget/best_provider_card.dart';
+import 'widget/top_trending_card.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final HomeController controller = Get.put(HomeController());
-  final Color brownColor = const Color(0xFFB17D47);
+
   List img = [
     "https://img.freepik.com/free-photo/man-installs-heating-system-house-checks-pipes-with-wrench_169016-55834.jpg?semt=ais_incoming&w=740&q=80",
     "https://img.freepik.com/premium-photo/electricity-electrical-maintenance-service-engineer-hand-holding-ac-voltmeter-checking-electric-current-voltage-circuit-breaker-terminal-cable-wiring-main-power-distribution-board_101448-4286.jpg?semt=ais_hybrid&w=740&q=80",
-    "https://t4.ftcdn.net/jpg/04/85/59/95/360_F_485599553_gxWaE8AmLEdpLRTS4iHvyBxhNoXMF4X5.jpg",
+    "https://img.freepik.com/free-photo/meticulous-wiremen-expertly-refilling-freon-external-air-conditioner-while-using-manifold-measurement-device-closely-measure-pressure-hvac-system-ensuring-perfect-cooling-performance_482257-68069.jpg?semt=ais_incoming&w=740&q=80",
     "https://img.freepik.com/free-photo/part-male-construction-worker_329181-3734.jpg",
     "https://media.istockphoto.com/id/1314435125/photo/appliance-technician-working-on-a-front-load-washing-machine-in-a-laundry-room.jpg?s=612x612&w=0&k=20&c=s8Ifj98Xhm-y-Xj63VTWeRUGgiNG_uf6OFxfiT4rH0s=",
     "https://static.vecteezy.com/system/resources/thumbnails/070/677/529/small/roofer-installing-asphalt-shingles-on-residential-home-performing-roofing-maintenance-and-repair-services-photo.jpeg",
-    "https://media.istockphoto.com/id/1461683093/photo/man-painting-wall-with-light-blue-dye-indoors-back-view.jpg?s=612x612&w=0&k=20&c=TDg87xVDJh-VA4zVClGlMnqpdqTh2QcZ--raihCv9XU="
+    "https://media.istockphoto.com/id/1461683093/photo/man-painting-wall-with-light-blue-dye-indoors-back-view.jpg?s=612x612&w=0&k=20&c=TDg87xVDJh-VA4zVClGlMnqpdqTh2QcZ--raihCv9XU=",
   ];
 
   @override
@@ -78,9 +80,7 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       height: 52.h,
                       decoration: BoxDecoration(
-                        color: const Color(
-                          0xFFE9F0F0,
-                        ), 
+                        color: const Color(0xFFE9F0F0),
                         borderRadius: BorderRadius.circular(20.r),
                         boxShadow: [
                           BoxShadow(
@@ -131,85 +131,87 @@ class HomeScreen extends StatelessWidget {
                   clipBehavior: Clip.none,
                   itemCount: controller.categories.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      width: 100.w,
-                      margin: EdgeInsets.only(right: 12.w),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
+                    return Obx(() {
+                      bool isSelected =
+                          controller.selectedCategoryIndex.value == index;
+                      return GestureDetector(
+                        onTap: () =>
+                            controller.selectedCategoryIndex.value = index,
+                        child: Container(
+                          width: 100.w,
+                          margin: EdgeInsets.only(right: 12.w),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.r),
                           ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16.r),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            CustomNetworkImage(
-                              imageUrl: img[index], 
-                              height: 110.h, 
-                              width: 100.w
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                  colors: [
-                                    Colors.black.withValues(alpha: 0.8),
-                                    Colors.transparent,
-                                  ],
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16.r),
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                CustomNetworkImage(
+                                  imageUrl: img[index],
+                                  height: 110.h,
+                                  width: 100.w,
                                 ),
-                              ),
-                              alignment: Alignment.bottomCenter,
-                              padding: EdgeInsets.only(
-                                bottom: 12.h,
-                                left: 8.w,
-                                right: 8.w,
-                              ),
-                              child: CustomText(
-                                text: controller.categories[index].toUpperCase(),
-                                fontSize: 10.sp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                textAlign: TextAlign.center,
-                              ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: isSelected
+                                          ? [
+                                              Colors.black.withValues(alpha: 0.95),
+                                              Colors.black.withValues(alpha: 0.6),
+                                            ]
+                                          : [
+                                              Colors.black.withValues(alpha: 0.8),
+                                              Colors.transparent,
+                                            ],
+                                    ),
+                                  ),
+                                  alignment: Alignment.bottomCenter,
+                                  padding: EdgeInsets.only(
+                                    bottom: 12.h,
+                                    left: 8.w,
+                                    right: 8.w,
+                                  ),
+                                  child: CustomText(
+                                    text: controller.categories[index]
+                                        .toUpperCase(),
+                                    fontSize: 10.sp,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    });
                   },
                 ),
               ),
               SizedBox(height: 24.h),
-
-              // Filter Chips
+              //sub category
               SizedBox(
                 height: 40.h,
-                child: ListView.builder(
+                child: Obx(() => ListView.builder(
                   scrollDirection: Axis.horizontal,
                   clipBehavior: Clip.none,
                   itemCount: controller.filterChips.length,
                   itemBuilder: (context, index) {
                     return Obx(() {
-                      bool isSelected =
-                          controller.selectedFilterChipIndex.value == index;
+                      bool isSelected = controller.selectedFilterChipIndex.value == index;
                       return GestureDetector(
-                        onTap: () =>
-                            controller.selectedFilterChipIndex.value = index,
+                        onTap: () => controller.selectedFilterChipIndex.value = index,
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
                           margin: EdgeInsets.only(right: 12.w),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: isSelected
-                                ? AppColors.primary
-                                : Colors.white,
+                            color: isSelected ? AppColors.primary : Colors.white,
                             borderRadius: BorderRadius.circular(24.r),
                             boxShadow: [
                               BoxShadow(
@@ -233,7 +235,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     });
                   },
-                ),
+                )),
               ),
               SizedBox(height: 24.h),
 
@@ -272,310 +274,35 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
 
-              // Best Providers Horizontal List
               SizedBox(
-                height: 220.h,
-                child: ListView.builder(
+                height: 220,
+                child: Obx(() => ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  clipBehavior: Clip.none,
                   itemCount: controller.bestProviders.length,
                   itemBuilder: (context, index) {
                     final provider = controller.bestProviders[index];
-                    return Container(
-                      width: 330.w,
-                      margin: EdgeInsets.only(right: 16.w),
-                      padding: EdgeInsets.all(16.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 50.h,
-                                      width: 50.w,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius: BorderRadius.circular(
-                                          16.r,
-                                        ),
-                                      ),
-                                      child: Icon(
-                                        Icons.people,
-                                        color: Colors.grey.shade600,
-                                        size: 28.sp,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12.w),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 6.w,
-                                                  vertical: 2.h,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: AppColors.primary
-                                                      .withValues(alpha: 0.1),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        8.r,
-                                                      ),
-                                                ),
-                                                child: Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.check,
-                                                      color: AppColors.primary,
-                                                      size: 12.sp,
-                                                    ),
-                                                    SizedBox(width: 2.w),
-                                                    CustomText(
-                                                      text: "Verified",
-                                                      color: AppColors.primary,
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 4.h),
-                                          CustomText(
-                                            text: provider['name'],
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: AppColors.black,
-                                          ),
-                                          SizedBox(height: 2.h),
-                                          CustomText(
-                                            text:
-                                                "${provider['jobsCompleted']} jobs completed | ${provider['distance']}",
-                                            fontSize: 11.sp,
-                                            color: Colors.grey.shade600,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Icon(
-                                    Icons.favorite_border,
-                                    color: AppColors.primary,
-                                    size: 22.sp,
-                                  ),
-                                  SizedBox(height: 8.h),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 6.w,
-                                      vertical: 4.h,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12.r),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withValues(
-                                            alpha: 0.1,
-                                          ),
-                                          blurRadius: 4,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                          size: 14.sp,
-                                        ),
-                                        SizedBox(width: 4.w),
-                                        CustomText(
-                                          text: "${provider['rating']}",
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 12.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                    size: 14.sp,
-                                  ),
-                                  SizedBox(width: 4.w),
-                                  CustomText(
-                                    text:
-                                        "${provider['rating']} (${provider['reviews']})",
-                                    fontSize: 11.sp,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                  SizedBox(width: 12.w),
-                                  Icon(
-                                    Icons.access_time,
-                                    color: Colors.grey.shade500,
-                                    size: 14.sp,
-                                  ),
-                                  SizedBox(width: 4.w),
-                                  CustomText(
-                                    text: provider['travelDistance'],
-                                    fontSize: 11.sp,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                ],
-                              ),
-                              CustomText(
-                                text: "View Service Plans >",
-                                fontSize: 11.sp,
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4.h),
-                          CustomText(
-                            text: "Responds in ${provider['responseTime']}",
-                            fontSize: 10.sp,
-                            color: AppColors.primary,
-                          ),
-                          Spacer(),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  height: 38.h,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primary,
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.call,
-                                        color: Colors.white,
-                                        size: 16.sp,
-                                      ),
-                                      SizedBox(width: 4.w),
-                                      CustomText(
-                                        text: "Call",
-                                        color: Colors.white,
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 8.w),
-                              Expanded(
-                                child: Container(
-                                  height: 38.h,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primary,
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.chat_bubble_outline,
-                                        color: Colors.white,
-                                        size: 16.sp,
-                                      ),
-                                      SizedBox(width: 4.w),
-                                      CustomText(
-                                        text: "Message",
-                                        color: Colors.white,
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 8.w),
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 38.h,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: brownColor,
-                                    borderRadius: BorderRadius.circular(12.r),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.request_quote_outlined,
-                                        color: Colors.white,
-                                        size: 16.sp,
-                                      ),
-                                      SizedBox(width: 4.w),
-                                      Flexible(
-                                        // Wrap text with Flexible to prevent overflow
-                                        child: CustomText(
-                                          text: "Request Quote",
-                                          color: Colors.white,
-                                          fontSize: 11.sp,
-                                          fontWeight: FontWeight.w600,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    return BestProviderCard(
+                      name: provider["name"],
+                      jobsCompleted: provider["jobsCompleted"],
+                      rating: provider["rating"],
+                      reviews: provider["reviews"],
+                      distance: provider["travelDistance"],
+                      responseTime: provider["responseTime"],
+                      onCall: () {
+                        debugPrint("Call clicked");
+                      },
+                      onMessage: () {
+                        debugPrint("Message clicked");
+                      },
+                      onRequest: () {
+                        debugPrint("Request clicked");
+                      },
                     );
                   },
-                ),
+                )),
               ),
-
               SizedBox(height: 24.h),
 
               // Top Trending Section Header
@@ -614,192 +341,15 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 16.h),
 
               // Top Trending Vertical List
-              ListView.builder(
+              Obx(() => ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.topTrending.length,
                 itemBuilder: (context, index) {
                   final provider = controller.topTrending[index];
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 16.h),
-                    padding: EdgeInsets.all(16.w),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(24.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: 50.w,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.circular(16.r),
-                          ),
-                          child: Icon(
-                            provider['name'] == 'Smart Plumbing'
-                                ? Icons.check_circle_outline
-                                : Icons.people,
-                            color: provider['name'] == 'Smart Plumbing'
-                                ? AppColors.primary
-                                : Colors.grey.shade600,
-                            size: 28.sp,
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    text: provider['name'],
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.black,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 6.w,
-                                      vertical: 2.h,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.primary.withValues(
-                                        alpha: 0.1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.r),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.check,
-                                          color: AppColors.primary,
-                                          size: 12.sp,
-                                        ),
-                                        SizedBox(width: 2.w),
-                                        CustomText(
-                                          text: "Verified",
-                                          color: AppColors.primary,
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 4.h),
-                              CustomText(
-                                text: provider['fastResponse'] == true
-                                    ? "Fast response | ${provider['distance']}"
-                                    : "${provider['jobsCompleted']} jobs completed | ${provider['distance']}",
-                                fontSize: 11.sp,
-                                color: Colors.grey.shade600,
-                              ),
-                              SizedBox(height: 12.h),
-                              // Row(
-                              //   mainAxisAlignment:
-                              //       MainAxisAlignment.spaceBetween,
-                              //   children: [
-                              //     Column(
-                              //       crossAxisAlignment:
-                              //           CrossAxisAlignment.start,
-                              //       children: [
-                              //         Row(
-                              //           children: [
-                              //             Icon(
-                              //               Icons.star,
-                              //               color: Colors.amber,
-                              //               size: 14.sp,
-                              //             ),
-                              //             SizedBox(width: 4.w),
-                              //             CustomText(
-                              //               text:
-                              //                   "${provider['rating']} (${provider['reviews']})${provider['fastResponse'] == true ? ' Rating' : ''}",
-                              //               fontSize: 11.sp,
-                              //               color: Colors.grey.shade600,
-                              //             ),
-                              //           ],
-                              //         ),
-                              //         SizedBox(height: 4.h),
-                              //         Row(
-                              //           children: [
-                              //             Icon(
-                              //               provider['availableNow'] == true
-                              //                   ? Icons.check_circle
-                              //                   : Icons.access_time,
-                              //               color:
-                              //                   provider['availableNow'] == true
-                              //                   ? tealColor
-                              //                   : Colors.grey.shade500,
-                              //               size: 14.sp,
-                              //             ),
-                              //             SizedBox(width: 4.w),
-                              //             CustomText(
-                              //               text:
-                              //                   provider['availableNow'] == true
-                              //                   ? "Available\nnow"
-                              //                   : provider['travelDistance'],
-                              //               fontSize: 11.sp,
-                              //               color: Colors.grey.shade600,
-                              //             ),
-                              //           ],
-                              //         ),
-                              //       ],
-                              //     ),
-                              //     Container(
-                              //       height: 36.h,
-                              //       padding: EdgeInsets.symmetric(
-                              //         horizontal: 16.w,
-                              //       ),
-                              //       decoration: BoxDecoration(
-                              //         color: provider['availableNow'] == true
-                              //             ? brownColor
-                              //             : tealColor,
-                              //         borderRadius: BorderRadius.circular(12.r),
-                              //       ),
-                              //       child: Row(
-                              //         children: [
-                              //           Icon(
-                              //             provider['availableNow'] == true
-                              //                 ? Icons.flash_on
-                              //                 : Icons.call,
-                              //             color: Colors.white,
-                              //             size: 16.sp,
-                              //           ),
-                              //           SizedBox(width: 4.w),
-                              //           CustomText(
-                              //             text: provider['availableNow'] == true
-                              //                 ? "Instant Request"
-                              //                 : "Request",
-                              //             color: Colors.white,
-                              //             fontSize: 12.sp,
-                              //             fontWeight: FontWeight.w600,
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return TopTrendingCard(provider: provider);
                 },
-              ),
+              )),
               SizedBox(height: 100.h),
             ],
           ),
