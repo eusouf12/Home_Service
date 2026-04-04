@@ -3,6 +3,14 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   RxInt selectedCategoryIndex = 0.obs;
   RxInt selectedFilterChipIndex = 0.obs;
+  RxInt selectedLanguageIndex = 0.obs;
+
+  final List<Map<String, String>> languagesList = [
+    {"name": "English", "country": "United States", "flag": "https://flagcdn.com/w320/us.png"},
+    {"name": "Español", "country": "España", "flag": "https://flagcdn.com/w320/es.png"},
+    {"name": "Français", "country": "France", "flag": "https://flagcdn.com/w320/fr.png"},
+    {"name": "العربية", "country": "Arabic", "flag": "https://flagcdn.com/w320/sa.png"},
+  ];
 
   final List<String> categories = [
     "Plumbing",

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
-import '../../../utils/app_colors/app_colors.dart';
-import '../../../utils/app_icons/app_icons.dart';
-import '../../components/custom_image/custom_image.dart';
-import '../../components/custom_text/custom_text.dart';
-import '../../components/custom_text_field/custom_text_field.dart';
-import 'home_controller.dart';
-import 'widget/best_provider_card.dart';
-import 'widget/top_trending_card.dart';
+import '../../../../utils/app_colors/app_colors.dart';
+import '../../../../utils/app_icons/app_icons.dart';
+import '../../../components/custom_image/custom_image.dart';
+import '../../../components/custom_text/custom_text.dart';
+import '../../../components/custom_text_field/custom_text_field.dart';
+import '../controller/home_controller.dart';
+import '../widget/best_provider_card.dart';
+import '../widget/top_trending_card.dart';
+import 'language_selected_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -61,7 +62,12 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Icon(Icons.language, color: AppColors.primary, size: 28.sp),
+            child: GestureDetector(
+              onTap: () {
+                showLanguageBottomSheet(context);
+              },
+              child: Icon(Icons.language, color: AppColors.primary, size: 28.sp),
+            ),
           ),
         ],
       ),

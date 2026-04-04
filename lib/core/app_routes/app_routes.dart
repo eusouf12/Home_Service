@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../view/sereen/home_screen/home_screen.dart';
+import '../../view/sereen/home_screen/screen/home_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
