@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
+import '../../../../core/app_routes/app_routes.dart';
 import '../../../../utils/app_colors/app_colors.dart';
 import '../../../../utils/app_icons/app_icons.dart';
 import '../../../components/custom_image/custom_image.dart';
@@ -12,6 +13,7 @@ import '../widget/best_provider_card.dart';
 import '../widget/top_trending_card.dart';
 import 'language_selected_screen.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
@@ -112,7 +114,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 12.w),
-                  Container(
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.filterScreen);
+                    },
+                    child: Container(
                     height: 52.h,
                     width: 52.w,
                     decoration: BoxDecoration(
@@ -124,6 +130,7 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.white,
                       size: 28.sp,
                     ),
+                  ),
                   ),
                 ],
               ),

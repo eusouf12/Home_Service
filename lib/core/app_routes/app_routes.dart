@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../view/sereen/home_screen/screen/filtter_screen.dart';
 import '../../view/sereen/home_screen/screen/home_screen.dart';
 
 class AppRoutes {
@@ -17,6 +18,7 @@ class AppRoutes {
   ///===========================other part Part==========================
   static const String singleView = "/SingleView";
   static const String homeScreen = "/HomeScreen";
+  static const String filterScreen = "/FilterScreen";
  
 
 
@@ -36,5 +38,6 @@ class AppRoutes {
 
     ///============== Immigration Seeker ==================
     GetPage(name: homeScreen, page: () => HomeScreen()),
+    GetPage(name: filterScreen, page: () => FilterScreen()),
   ];
 }
