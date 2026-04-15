@@ -8,6 +8,7 @@ import '../../../components/custom_text/custom_text.dart';
 
 class BestProviderCard extends StatelessWidget {
   final String name;
+  final String? imageUrl;
   final int jobsCompleted;
   final double rating;
   final int reviews;
@@ -30,6 +31,7 @@ class BestProviderCard extends StatelessWidget {
     this.onCall,
     this.onMessage,
     this.onRequest,
+    this.imageUrl,
   });
 
   @override
@@ -55,7 +57,7 @@ class BestProviderCard extends StatelessWidget {
           /// Top
           Row(
             children: [
-              CustomNetworkImage(imageUrl: AppConstants.profileImage2, height: 50.h, width: 50.w,boxShape: BoxShape.circle,),
+              CustomNetworkImage(imageUrl: imageUrl ?? AppConstants.girlsPhoto, height: 50.h, width: 50.w,boxShape: BoxShape.circle,),
               SizedBox(width: 12.w),
 
               Expanded(
