@@ -16,9 +16,24 @@ class _FilterScreenState extends State<FilterScreen> {
   String selectedPrice = "\$";
   double distance = 25.0;
   String selectedRating = "4+";
-  bool isVerified = true;
-  bool isDiscount = true;
-  bool isEmergency = true;
+  bool isVerified = false;
+  bool isDiscount = false;
+  bool isEmergency = false;
+
+  // Availability States
+  String selectedAvailability = "Today";
+  bool isThisWeekExpanded = false;
+  String selectedDayOfWeek = "";
+
+  final List<String> weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -136,15 +151,76 @@ class _FilterScreenState extends State<FilterScreen> {
             _buildAvailabilityCard(
               "Today",
               Icons.calendar_today_outlined,
-              true,
+              selectedAvailability == "Today",
+              onTap: () {
+                setState(() {
+                  selectedAvailability = "Today";
+                  isThisWeekExpanded = false;
+                });
+              },
             ),
             SizedBox(height: 12.h),
             _buildAvailabilityCard(
               "This Week",
               Icons.calendar_month_outlined,
-              false,
-              subtitle: "Choose Date",
+              selectedAvailability == "This Week",
+              subtitle: selectedDayOfWeek.isEmpty ? "Choose Date" : selectedDayOfWeek,
+              trailing: Icon(
+                isThisWeekExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                color: Colors.grey,
+              ),
+              onTap: () {
+                setState(() {
+                  selectedAvailability = "This Week";
+                  isThisWeekExpanded = !isThisWeekExpanded;
+                });
+              },
             ),
+            if (isThisWeekExpanded)
+              Container(
+                margin: EdgeInsets.only(top: 8.h),
+                padding: EdgeInsets.all(12.w),
+                decoration: BoxDecoration(
+                  color: const Color(0xffF8FAFB),
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(color: const Color(0xffE6EBEE)),
+                ),
+                child: Column(
+                  children: weekDays.map((day) {
+                    bool isSelected = day == selectedDayOfWeek;
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDayOfWeek = day;
+                          // Optional: Close dropdown after selection
+                          // isThisWeekExpanded = false; 
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
+                        margin: EdgeInsets.only(bottom: 4.h),
+                        decoration: BoxDecoration(
+                          color: isSelected ? const Color(0xffE8F3F1) : Colors.transparent,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              text: day,
+                              color: isSelected ? const Color(0xff006D5B) : const Color(0xff5D6B78),
+                              fontSize: 14.sp,
+                              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                            ),
+                            if (isSelected)
+                              Icon(Icons.check, color: const Color(0xff006D5B), size: 18.sp),
+                          ],
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
 
             SizedBox(height: 24.h),
 
@@ -172,6 +248,7 @@ class _FilterScreenState extends State<FilterScreen> {
           ],
         ),
       ),
+      // apply and clear btn
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(20.w),
         decoration: const BoxDecoration(
@@ -182,7 +259,18 @@ class _FilterScreenState extends State<FilterScreen> {
             Expanded(
               child: CustomButton(
                 onTap: () {
-                  // Clear all logic here
+                  setState(() {
+                    selectedCategory = "Plumbing";
+                    selectedPrice = "\$";
+                    distance = 25.0;
+                    selectedRating = "4+";
+                    isVerified = false;
+                    isDiscount = false;
+                    isEmergency = false;
+                    selectedAvailability = "Today";
+                    isThisWeekExpanded = false;
+                    selectedDayOfWeek = "";
+                  });
                 },
                 title: "Clear All",
                 fillColor: Colors.transparent,
@@ -311,41 +399,46 @@ class _FilterScreenState extends State<FilterScreen> {
     IconData icon,
     bool isSelected, {
     String? subtitle,
+    VoidCallback? onTap,
+    Widget? trailing,
   }) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: const Color(0xffF8FAFB),
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: const Color(0xff006D5B)),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  text: title,
-                  color: Colors.black,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-                if (subtitle != null)
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: const Color(0xffF8FAFB),
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: const Color(0xff006D5B)),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   CustomText(
-                    text: subtitle,
-                    color: Colors.grey,
-                    fontSize: 13.sp,
+                    text: title,
+                    color: Colors.black,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
                   ),
-              ],
+                  if (subtitle != null)
+                    CustomText(
+                      text: subtitle,
+                      color: Colors.grey,
+                      fontSize: 13.sp,
+                    ),
+                ],
+              ),
             ),
-          ),
-          if (isSelected)
-            const Icon(Icons.check_circle, color: Color(0xff006D5B))
-          else
-            const Icon(Icons.chevron_right, color: Colors.grey),
-        ],
+            trailing ??
+                (isSelected
+                    ? const Icon(Icons.check_circle, color: Color(0xff006D5B))
+                    : const Icon(Icons.chevron_right, color: Colors.grey)),
+          ],
+        ),
       ),
     );
   }
