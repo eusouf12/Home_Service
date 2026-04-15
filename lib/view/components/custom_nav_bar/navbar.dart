@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../utils/app_colors/app_colors.dart';
+import 'package:get/get.dart';
+import '../../../core/app_routes/app_routes.dart';
+import '../../../utils/app_icons/app_icons.dart';
 
-class HostNavbar extends StatefulWidget {
+class CustomNavBar extends StatefulWidget {
   final int currentIndex;
 
-  const HostNavbar({required this.currentIndex, super.key});
+  const CustomNavBar({required this.currentIndex, super.key});
 
   @override
-  State<HostNavbar> createState() => _HostNavBarState();
+  State<CustomNavBar> createState() => _CustomNavBarState();
 }
 
-class _HostNavBarState extends State<HostNavbar> {
+class _CustomNavBarState extends State<CustomNavBar> {
   late int bottomNavIndex;
-
-  final List<IconData> icons = [Icons.home, Icons.settings];
-
-  final List<String> labels = ['SetUp_Profile_Screen', 'Settings'];
 
   @override
   void initState() {
@@ -26,95 +24,62 @@ class _HostNavBarState extends State<HostNavbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        SafeArea(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.zero,
-            ),
-            height: 80.h,
-            width: MediaQuery.of(context).size.width,
-            alignment: Alignment.centerLeft,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildNavItem(0),
-                SizedBox(width: 60.w),
-                _buildNavItem(1),
-              ],
-            ),
+    return Container(
+     // margin: EdgeInsets.only(left: 0.w, right: 0.w, bottom: 10.h),
+      height: 75.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(40.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.15),
+            blurRadius: 15,
+            spreadRadius: 2,
+            offset: const Offset(0, 5),
           ),
-        ),
-        // Floating Add Button
-        Positioned(
-          top: -20.h,
-          left: MediaQuery.of(context).size.width / 2 - 28.w,
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  // Get.toNamed(AppRoutes.addDocument);
-                },
-                child: Container(
-                  width: 60.w,
-                  height: 60.h, // increased height
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primary.withOpacity(0.3),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Icon(Icons.add, color: Colors.white, size: 26.sp),
-                ),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Add",
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildNavItem(int index) {
-    bool isSelected = index == bottomNavIndex;
-
-    return InkWell(
-      onTap: () => onTap(index),
-      borderRadius: BorderRadius.circular(20.r),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        ],
+      ),
+      child: Stack(
         children: [
-          SizedBox(height: 13.h),
-          Icon(
-            icons[index],
-            size: 25.sp,
-            color: isSelected ? AppColors.primary : Colors.grey,
+          // Inner cyan top gradient glow
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 35.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    const Color(0xFF5BD7BC).withValues(alpha: 0.8),
+                    const Color(0xFF5BD7BC).withValues(alpha: 0.0),
+                  ],
+                ),
+              ),
+            ),
           ),
-          SizedBox(height: 4.h),
-          Text(
-            labels[index],
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-              color: isSelected ? AppColors.primary : Colors.grey,
+
+          // Row of buttons
+          Positioned.fill(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildNavItem(0, "HOME", Icons.home),
+                  _buildNavItem(1, "BOOKINGS", Icons.calendar_today_rounded),
+                  _buildNavItem(2, "MESSAGES", Icons.chat_bubble),
+                  _buildNavItem(3, "SOCIAL", null, isImage: true),
+                  _buildNavItem(4, "ACCOUNT", Icons.person),
+                ],
+              ),
             ),
           ),
         ],
@@ -122,19 +87,72 @@ class _HostNavBarState extends State<HostNavbar> {
     );
   }
 
+  Widget _buildNavItem(
+    int index,
+    String label,
+    IconData? icon, {
+    bool isImage = false,
+  }) {
+    bool isSelected = index == bottomNavIndex;
+
+    return GestureDetector(
+      onTap: () => onTap(index),
+      child: Container(
+        width: 62.w,
+        height: 62.w,
+        decoration: BoxDecoration(
+          color: const Color(0xFF161616), // Dark circle background
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.4),
+              blurRadius: 10,
+              spreadRadius: 1,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (isImage)
+              Image.asset(AppIcons.newLogo, height: 24.h, width: 24.w)
+            else
+              Icon(
+                icon,
+                size: 24.sp,
+                color: isSelected ? const Color(0xFF5BD7BC) : Colors.white,
+              ),
+
+            SizedBox(height: 3.h),
+
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 8.sp,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                letterSpacing: 0.3,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   void onTap(int index) {
     if (index != bottomNavIndex) {
-      setState(() {
-        bottomNavIndex = index;
-      });
-
-      switch (index) {
-        case 0:
-          // Get.offAll(() => HomeScreen());
-          break;
-        case 1:
-          // Get.to(() => ProfileScreen());
-          break;
+      if (index == 0) {
+        Get.offAllNamed(AppRoutes.homeScreen);
+      } else if (index == 1) {
+        Get.offAllNamed(AppRoutes.bookingScreen);
+      } else if (index == 2) {
+        // Get.offAllNamed(AppRoutes.messagesScreen);
+      } else if (index == 3) {
+        // Get.offAllNamed(AppRoutes.socialScreen);
+      } else if (index == 4) {
+        // Get.offAllNamed(AppRoutes.profileScreen);
       }
     }
   }

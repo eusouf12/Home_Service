@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
 import '../../../../core/app_routes/app_routes.dart';
 import '../../../../utils/app_colors/app_colors.dart';
@@ -11,6 +12,7 @@ import '../../../components/custom_text_field/custom_text_field.dart';
 import '../controller/home_controller.dart';
 import '../widget/best_provider_card.dart';
 import '../widget/top_trending_card.dart';
+import '../../../components/custom_nav_bar/navbar.dart';
 import 'language_selected_screen.dart';
 
 // ignore: must_be_immutable
@@ -31,50 +33,55 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5F7F9),
-      appBar: AppBar(
-        toolbarHeight: 70.h,
+    return CustomGradient(
+      child: Scaffold(
+        bottomNavigationBar: const CustomNavBar(currentIndex: 0),
+        extendBody: true,
         backgroundColor: const Color(0xFFF5F7F9),
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        leadingWidth: 100.w,
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BackButton(color: AppColors.primary),
+        appBar: AppBar(
+          toolbarHeight: 70.h,
+          backgroundColor: const Color(0xFFF5F7F9),
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          leadingWidth: 100.w,
+          leading: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: CustomImage(
+                  imageSrc: AppIcons.newLogo,
+                  height: 40.h,
+                  width: 40.w,
+                ),
+              ),
+            ],
+          ),
+          centerTitle: true,
+          title: CustomText(
+            text: "Home Services",
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w700,
+            color: AppColors.black,
+          ),
+          actions: [
             Padding(
-              padding: EdgeInsets.only(top: 10.h),
-              child: CustomImage(
-                imageSrc: AppIcons.newLogo,
-                height: 40.h,
-                width: 40.w,
+              padding: EdgeInsets.only(right: 20.w),
+              child: GestureDetector(
+                onTap: () {
+                  showLanguageBottomSheet(context);
+                },
+                child: Icon(
+                  Icons.language,
+                  color: AppColors.primary,
+                  size: 28.sp,
+                ),
               ),
             ),
           ],
         ),
-        centerTitle: true,
-        title: CustomText(
-          text: "Home Services",
-          fontSize: 20.sp,
-          fontWeight: FontWeight.w700,
-          color: AppColors.black,
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 20.w),
-            child: GestureDetector(
-              onTap: () {
-                showLanguageBottomSheet(context);
-              },
-              child: Icon(Icons.language, color: AppColors.primary, size: 28.sp),
-            ),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+        body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,18 +126,18 @@ class HomeScreen extends StatelessWidget {
                       Get.toNamed(AppRoutes.filterScreen);
                     },
                     child: Container(
-                    height: 52.h,
-                    width: 52.w,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(16.r),
+                      height: 52.h,
+                      width: 52.w,
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(16.r),
+                      ),
+                      child: Icon(
+                        Icons.tune_rounded,
+                        color: Colors.white,
+                        size: 28.sp,
+                      ),
                     ),
-                    child: Icon(
-                      Icons.tune_rounded,
-                      color: Colors.white,
-                      size: 28.sp,
-                    ),
-                  ),
                   ),
                 ],
               ),
@@ -173,11 +180,17 @@ class HomeScreen extends StatelessWidget {
                                       end: Alignment.topCenter,
                                       colors: isSelected
                                           ? [
-                                              Colors.black.withValues(alpha: 0.95),
-                                              Colors.black.withValues(alpha: 0.6),
+                                              Colors.black.withValues(
+                                                alpha: 0.95,
+                                              ),
+                                              Colors.black.withValues(
+                                                alpha: 0.6,
+                                              ),
                                             ]
                                           : [
-                                              Colors.black.withValues(alpha: 0.8),
+                                              Colors.black.withValues(
+                                                alpha: 0.8,
+                                              ),
                                               Colors.transparent,
                                             ],
                                     ),
@@ -210,45 +223,51 @@ class HomeScreen extends StatelessWidget {
               //sub category
               SizedBox(
                 height: 40.h,
-                child: Obx(() => ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  clipBehavior: Clip.none,
-                  itemCount: controller.filterChips.length,
-                  itemBuilder: (context, index) {
-                    return Obx(() {
-                      bool isSelected = controller.selectedFilterChipIndex.value == index;
-                      return GestureDetector(
-                        onTap: () => controller.selectedFilterChipIndex.value = index,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          margin: EdgeInsets.only(right: 12.w),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: isSelected ? AppColors.primary : Colors.white,
-                            borderRadius: BorderRadius.circular(24.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.05),
-                                blurRadius: 8,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
+                child: Obx(
+                  () => ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    clipBehavior: Clip.none,
+                    itemCount: controller.filterChips.length,
+                    itemBuilder: (context, index) {
+                      return Obx(() {
+                        bool isSelected =
+                            controller.selectedFilterChipIndex.value == index;
+                        return GestureDetector(
+                          onTap: () =>
+                              controller.selectedFilterChipIndex.value = index,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
+                            margin: EdgeInsets.only(right: 12.w),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: isSelected
+                                  ? AppColors.primary
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(24.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.05),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: CustomText(
+                              text: controller.filterChips[index],
+                              fontSize: 13.sp,
+                              color: isSelected
+                                  ? Colors.white
+                                  : Colors.grey.shade700,
+                              fontWeight: isSelected
+                                  ? FontWeight.w600
+                                  : FontWeight.w500,
+                            ),
                           ),
-                          child: CustomText(
-                            text: controller.filterChips[index],
-                            fontSize: 13.sp,
-                            color: isSelected
-                                ? Colors.white
-                                : Colors.grey.shade700,
-                            fontWeight: isSelected
-                                ? FontWeight.w600
-                                : FontWeight.w500,
-                          ),
-                        ),
-                      );
-                    });
-                  },
-                )),
+                        );
+                      });
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 24.h),
 
@@ -289,32 +308,34 @@ class HomeScreen extends StatelessWidget {
 
               SizedBox(
                 height: 220,
-                child: Obx(() => ListView.builder(
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: controller.bestProviders.length,
-                  itemBuilder: (context, index) {
-                    final provider = controller.bestProviders[index];
-                    return BestProviderCard(
-                      name: provider["name"],
-                      jobsCompleted: provider["jobsCompleted"],
-                      rating: provider["rating"],
-                      reviews: provider["reviews"],
-                      distance: provider["travelDistance"],
-                      responseTime: provider["responseTime"],
-                      onCall: () {
-                        debugPrint("Call clicked");
-                      },
-                      onMessage: () {
-                        debugPrint("Message clicked");
-                      },
-                      onRequest: () {
-                        debugPrint("Request clicked");
-                      },
-                    );
-                  },
-                )),
+                child: Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.bestProviders.length,
+                    itemBuilder: (context, index) {
+                      final provider = controller.bestProviders[index];
+                      return BestProviderCard(
+                        name: provider["name"],
+                        jobsCompleted: provider["jobsCompleted"],
+                        rating: provider["rating"],
+                        reviews: provider["reviews"],
+                        distance: provider["travelDistance"],
+                        responseTime: provider["responseTime"],
+                        onCall: () {
+                          debugPrint("Call clicked");
+                        },
+                        onMessage: () {
+                          debugPrint("Message clicked");
+                        },
+                        onRequest: () {
+                          debugPrint("Request clicked");
+                        },
+                      );
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 24.h),
 
@@ -354,15 +375,17 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 16.h),
 
               // Top Trending Vertical List
-              Obx(() => ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.topTrending.length,
-                itemBuilder: (context, index) {
-                  final provider = controller.topTrending[index];
-                  return TopTrendingCard(provider: provider);
-                },
-              )),
+              Obx(
+                () => ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: controller.topTrending.length,
+                  itemBuilder: (context, index) {
+                    final provider = controller.topTrending[index];
+                    return TopTrendingCard(provider: provider);
+                  },
+                ),
+              ),
               SizedBox(height: 100.h),
             ],
           ),
