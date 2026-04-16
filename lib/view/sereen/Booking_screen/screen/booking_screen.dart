@@ -5,6 +5,7 @@ import 'package:home_service/utils/app_colors/app_colors.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_nav_bar/navbar.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
+import '../../../../core/app_routes/app_routes.dart';
 import '../controller/booking_controller.dart';
 import '../widget/booking_card.dart';
 import '../widget/past_booking_card.dart';
@@ -64,7 +65,7 @@ class BookingScreen extends StatelessWidget {
       ),
       child: Obx(
         () => Row(
-          children: [
+          children: [        
             _buildTabItem(title: "Upcoming", index: 0),
             _buildTabItem(title: "Past", index: 1),
             _buildTabItem(title: "Cancelled", index: 2),
@@ -119,7 +120,9 @@ class BookingScreen extends StatelessWidget {
           topStatus: index == 1 ? "MATCHING" : index == 2 ? "DRAFT" : "IN PROGRESS",
           activeStep: index == 1 ? 1 : index == 2 ? 0 : 2,
           onMessage: () {},
-          onViewDetails: () {},
+          onViewDetails: () {
+            Get.toNamed(AppRoutes.bookingDetailsScreen);
+          },
         );
       },
     );
