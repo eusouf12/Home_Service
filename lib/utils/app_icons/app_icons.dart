@@ -18,7 +18,7 @@ class AppIcons {
   //========== Home Service =========
   static const String newLogo = "$basePath/newLogo.png";
   static const String appBar = "$basePath/appBar.svg";
-
+  static const String arrow = "$basePath/arrow.svg";
 
 
 
