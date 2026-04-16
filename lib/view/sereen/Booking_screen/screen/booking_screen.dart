@@ -18,8 +18,15 @@ class BookingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomGradient(
-      child: Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool didPop) {
+        if (didPop) return;
+        // back to Home
+        Get.offAllNamed(AppRoutes.homeScreen);
+      },
+      child: CustomGradient(
+        child: Scaffold(
         extendBody: true,
         backgroundColor: Colors.white,
         bottomNavigationBar: const CustomNavBar(currentIndex: 1),
@@ -45,7 +52,7 @@ class BookingScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildTabBar() {

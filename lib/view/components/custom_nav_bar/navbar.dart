@@ -25,7 +25,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-     // margin: EdgeInsets.only(left: 0.w, right: 0.w, bottom: 10.h),
+      // margin: EdgeInsets.only(left: 0.w, right: 0.w, bottom: 10.h),
       height: 75.h,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -101,7 +101,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
         width: 62.w,
         height: 62.w,
         decoration: BoxDecoration(
-          color: const Color(0xFF161616), // Dark circle background
+          color: const Color(0xFF161616),
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
@@ -116,7 +116,15 @@ class _CustomNavBarState extends State<CustomNavBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (isImage)
-              Image.asset(AppIcons.newLogo, height: 24.h, width: 24.w)
+              Transform.translate(
+                offset: const Offset(0, 2),
+                child: Image.asset(
+                  AppIcons.newLogo, 
+                  height: 36.h, 
+                  width: 50.w,
+                  fit: BoxFit.contain,
+                ),
+              )
             else
               Icon(
                 icon,
@@ -124,15 +132,18 @@ class _CustomNavBarState extends State<CustomNavBar> {
                 color: isSelected ? const Color(0xFF5BD7BC) : Colors.white,
               ),
 
-            SizedBox(height: 3.h),
+            isImage ? const SizedBox.shrink() : SizedBox(height: 3.h),
 
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 8.sp,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-                letterSpacing: 0.3,
+            Transform.translate(
+              offset: Offset(0, isImage ? -4.h : 0),
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                  letterSpacing: 0.3,
+                ),
               ),
             ),
           ],
