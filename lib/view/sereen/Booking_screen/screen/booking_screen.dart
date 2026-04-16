@@ -8,6 +8,7 @@ import 'package:home_service/view/components/custom_text/custom_text.dart';
 import '../controller/booking_controller.dart';
 import '../widget/booking_card.dart';
 import '../widget/past_booking_card.dart';
+import '../widget/cancelled_booking_card.dart';
 
 class BookingScreen extends StatelessWidget {
   BookingScreen({super.key});
@@ -145,16 +146,14 @@ class BookingScreen extends StatelessWidget {
   Widget _buildCancelledList() {
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h).copyWith(bottom: 100.h),
-      itemCount: 2,
+      itemCount: 3,
       itemBuilder: (context, index) {
-        return BookingCard(
-          title: "Electrical Wiring",
-          requestId: "#88293",
-          date: "Oct 01",
-          topStatus: "CANCELLED",
-          activeStep: 0,
-          onMessage: () {},
-          onViewDetails: () {},
+        return CancelledBookingCard(
+          title: index == 0 ? "Gutter Cleaning" : index == 1 ? "Deep Home Cleaning" : "Light Fixture Repair",
+          date: index == 0 ? "Oct 24, 2023 • 2:00 PM" : index == 1 ? "Sep 12, 2023 • 9:00 AM" : "Aug 05, 2023 • 4:30 PM",
+          reason: index == 0 ? "Reason: Technician unavailable at requested time" : index == 1 ? "Reason: User cancelled - change of plans" : "Reason: Duplicate request",
+          imageUrl: index == 0 ? null : index == 1 ? "https://www.hourmaid.com/wp-content/uploads/2019/01/deep-clean.jpeg" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlmu7UlT-AE0BAE7UI8t_6MljfiBWD0UEX4g&s",
+          onRestartRequest: () {},
         );
       },
     );
