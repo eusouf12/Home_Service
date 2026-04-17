@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
 
@@ -9,54 +10,56 @@ class SavedProviderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
-      appBar: AppBar(
+    return CustomGradient(
+      child: Scaffold(
         backgroundColor: const Color(0xFFF9FAFB),
-        elevation: 0,
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF334155)),
-          onPressed: () => Get.back(),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFF9FAFB),
+          elevation: 0,
+          centerTitle: true,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Color(0xFF334155)),
+            onPressed: () => Get.back(),
+          ),
+          title: CustomText(text: "Saved Providers", fontSize: 18.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
         ),
-        title: CustomText(text: "Saved Providers", fontSize: 18.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            children: [
-              SizedBox(height: 16.h),
-              _buildProviderCard(
-                name: "Chef Julian Vane",
-                category: "French Cuisine",
-                rating: "4.9",
-                reviews: "128",
-                imageUrl: "https://img.freepik.com/free-photo/portrait-smiling-chef-uniform_329181-675.jpg",
-              ),
-              _buildProviderCard(
-                name: "Elena Rodriguez",
-                category: "Interior Design",
-                rating: "4.8",
-                reviews: "94",
-                imageUrl: "https://img.freepik.com/free-photo/close-up-portrait-gorgeous-young-woman_273609-35368.jpg",
-              ),
-              _buildProviderCard(
-                name: "Marcus Thorne",
-                category: "Personal Trainer",
-                rating: "5.0",
-                reviews: "210",
-                imageUrl: "https://img.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-31559.jpg",
-              ),
-              _buildProviderCard(
-                name: "Sarah Jenkins",
-                category: "Home Cleaning",
-                rating: "4.7",
-                reviews: "56",
-                imageUrl: "https://img.freepik.com/free-photo/headshot-portrait-happy-mixed-race-african-girl-wearing-glasses_114579-79848.jpg",
-              ),
-              SizedBox(height: 32.h),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                SizedBox(height: 16.h),
+                _buildProviderCard(
+                  name: "Chef Julian Vane",
+                  category: "French Cuisine",
+                  rating: "4.9",
+                  reviews: "128",
+                  imageUrl: "https://img.freepik.com/free-photo/portrait-smiling-chef-uniform_329181-675.jpg",
+                ),
+                _buildProviderCard(
+                  name: "Elena Rodriguez",
+                  category: "Interior Design",
+                  rating: "4.8",
+                  reviews: "94",
+                  imageUrl: "https://img.freepik.com/free-photo/close-up-portrait-gorgeous-young-woman_273609-35368.jpg",
+                ),
+                _buildProviderCard(
+                  name: "Marcus Thorne",
+                  category: "Personal Trainer",
+                  rating: "5.0",
+                  reviews: "210",
+                  imageUrl: "https://img.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-31559.jpg",
+                ),
+                _buildProviderCard(
+                  name: "Sarah Jenkins",
+                  category: "Home Cleaning",
+                  rating: "4.7",
+                  reviews: "56",
+                  imageUrl: "https://img.freepik.com/free-photo/headshot-portrait-happy-mixed-race-african-girl-wearing-glasses_114579-79848.jpg",
+                ),
+                SizedBox(height: 32.h),
+              ],
+            ),
           ),
         ),
       ),

@@ -12,9 +12,18 @@ import '../../view/sereen/home_screen/screen/all_reviews_screen.dart';
 import '../../view/sereen/rating_screen/screen/overview_rating_screen.dart';
 import '../../view/sereen/message_screen/screen/message_screen.dart';
 import '../../view/sereen/message_screen/screen/inbox_screen.dart';
+import '../../view/sereen/user_profile/screen/help_support_screen.dart';
 import '../../view/sereen/user_profile/screen/user_profile_screen.dart';
 import '../../view/sereen/user_profile/screen/edit_profile_screen.dart';
 import '../../view/sereen/user_profile/screen/saved_provider_screen.dart';
+import '../../view/sereen/user_profile/screen/payment_history_screen.dart';
+import '../../view/sereen/user_profile/screen/privacy_security_screen.dart';
+import '../../view/sereen/user_profile/screen/change_password_screen.dart';
+import '../../view/sereen/user_profile/screen/legal_policies_screen.dart';
+import '../../view/sereen/user_profile/screen/become_provider_screen.dart';
+import '../../view/sereen/user_profile/screen/saved_address_screen.dart';
+import '../../view/sereen/user_profile/screen/add_new_address_screen.dart';
+import '../../view/sereen/user_profile/screen/logout_success_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
@@ -47,6 +56,15 @@ class AppRoutes {
   static const String userProfileScreen = "/UserProfileScreen";
   static const String editProfileScreen = "/EditProfileScreen";
   static const String savedProviderScreen = "/SavedProviderScreen";
+  static const String paymentHistoryScreen = "/PaymentHistoryScreen";
+  static const String privacySecurityScreen = "/PrivacySecurityScreen";
+  static const String changePasswordScreen = "/ChangePasswordScreen";
+  static const String legalPoliciesScreen = "/LegalPoliciesScreen";
+  static const String helpSupportScreen = "/HelpSupportScreen";
+  static const String becomeProviderScreen = "/BecomeProviderScreen";
+  static const String savedAddressScreen = "/SavedAddressScreen";
+  static const String addNewAddressScreen = "/AddNewAddressScreen";
+  static const String logoutSuccessScreen = "/LogoutSuccessScreen";
 
   static List<GetPage> routes = [
 
@@ -79,5 +97,14 @@ class AppRoutes {
     GetPage(name: userProfileScreen, page: () => const UserProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: savedProviderScreen, page: () => const SavedProviderScreen()),
+    GetPage(name: paymentHistoryScreen, page: () => const PaymentHistoryScreen()),
+    GetPage(name: privacySecurityScreen, page: () => const PrivacySecurityScreen()),
+    GetPage(name: changePasswordScreen, page: () => const ChangePasswordScreen()),
+    GetPage(name: legalPoliciesScreen, page: () => const LegalPoliciesScreen()),
+    GetPage(name: helpSupportScreen, page: () => const HelpSupportScreen()),
+    GetPage(name: becomeProviderScreen, page: () => const BecomeProviderScreen()),
+    GetPage(name: savedAddressScreen, page: () => const SavedAddressScreen()),
+    GetPage(name: addNewAddressScreen, page: () => const AddNewAddressScreen()),
+    GetPage(name: logoutSuccessScreen, page: () => const LogoutSuccessScreen()),
   ];
 }
