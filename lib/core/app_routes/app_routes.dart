@@ -4,6 +4,7 @@ import '../../view/sereen/home_screen/screen/home_screen.dart';
 import '../../view/sereen/Booking_screen/screen/booking_screen.dart';
 import '../../view/sereen/Booking_screen/screen/booking_details_screen.dart';
 import '../../view/sereen/Booking_screen/screen/create_request_screen.dart';
+import '../../view/sereen/rating_screen/screen/rating_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
@@ -25,6 +26,7 @@ class AppRoutes {
   static const String bookingScreen = "/BookingScreen";
   static const String bookingDetailsScreen = "/BookingDetailsScreen";
   static const String createRequestScreen = "/CreateRequestScreen";
+  static const String ratingScreen = "/RatingScreen";
 
 
   static List<GetPage> routes = [
@@ -47,5 +49,6 @@ class AppRoutes {
     GetPage(name: bookingScreen, page: () => BookingScreen()),
     GetPage(name: bookingDetailsScreen, page: () => BookingDetailsScreen()),
     GetPage(name: createRequestScreen, page: () => const CreateRequestScreen()),
+    GetPage(name: ratingScreen, page: () => RatingScreen()),
   ];
 }

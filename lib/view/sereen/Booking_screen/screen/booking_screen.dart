@@ -176,7 +176,9 @@ class BookingScreen extends StatelessWidget {
           imageUrl: index == 1
               ? "https://b2406121.smushcdn.com/2406121/wp-content/uploads/2025/05/wc-1-scaled.jpeg?lossy=1&strip=1&webp=1"
               : "https://media.istockphoto.com/id/1461683093/photo/man-painting-wall-with-light-blue-dye-indoors-back-view.jpg?s=612x612&w=0&k=20&c=TDg87xVDJh-VA4zVClGlMnqpdqTh2QcZ--raihCv9XU=",
-          onRateService: () {},
+          onRateService: () {
+            Get.toNamed(AppRoutes.ratingScreen);
+          },
           onRebook: () {
             Get.toNamed(AppRoutes.createRequestScreen);
           },
