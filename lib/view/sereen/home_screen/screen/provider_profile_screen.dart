@@ -197,7 +197,9 @@ class ProviderProfileScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomButton(
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(AppRoutes.inboxScreen);
+                            },
                             title: "Message",
                             icon: Padding(
                               padding: EdgeInsets.only(right: 6.w),

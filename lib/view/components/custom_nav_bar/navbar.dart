@@ -159,11 +159,11 @@ class _CustomNavBarState extends State<CustomNavBar> {
       } else if (index == 1) {
         Get.offAllNamed(AppRoutes.bookingScreen);
       } else if (index == 2) {
-        // Get.offAllNamed(AppRoutes.messagesScreen);
+         Get.offAllNamed(AppRoutes.messagesScreen);
       } else if (index == 3) {
         // Get.offAllNamed(AppRoutes.socialScreen);
       } else if (index == 4) {
-        // Get.offAllNamed(AppRoutes.profileScreen);
+        Get.offAllNamed(AppRoutes.userProfileScreen);
       }
     }
   }

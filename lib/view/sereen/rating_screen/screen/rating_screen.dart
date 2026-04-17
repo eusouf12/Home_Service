@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../core/app_routes/app_routes.dart';
+import '../../../../utils/ToastMsg/toast_message.dart';
 import '../../../../utils/app_colors/app_colors.dart';
 import '../../../components/custom_button/custom_button.dart';
 import '../../../components/custom_text/custom_text.dart';
@@ -286,7 +288,10 @@ class RatingScreen extends StatelessWidget {
 
             // Submit Button
             CustomButton(
-              onTap: controller.submitReview,
+              onTap:(){
+                showCustomSnackBar("Review submitted successfully!", isError: false);
+                Get.offAllNamed(AppRoutes.overViewRatingScreen);
+              },
               title: "Submit Review",
               fillColor: AppColors.primary,
               textColor: AppColors.white,

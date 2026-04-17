@@ -146,7 +146,9 @@ class BookingScreen extends StatelessWidget {
               : index == 2
               ? 0
               : 2,
-          onMessage: () {},
+          onMessage: () {
+            Get.toNamed(AppRoutes.inboxScreen);
+          },
           onViewDetails: () {
             Get.toNamed(AppRoutes.bookingDetailsScreen);
           },

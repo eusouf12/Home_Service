@@ -33,7 +33,9 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.prefixIcon,
     this.onTap,
-    this.isDens = false, this.enabled = true,
+    this.isDens = false,
+    this.enabled = true,
+    this.contentPadding,
   });
 
   final TextEditingController? textEditingController;
@@ -64,6 +66,7 @@ class CustomTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onTap;
   final bool? isDens;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -92,9 +95,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLines: widget.maxLines,
       obscureText: widget.isPassword ? obscureText : false,
       validator: widget.validator,
-      textAlign: widget.textAlign,
       textAlignVertical: widget.textAlignVertical,
       decoration: InputDecoration(
+        contentPadding: widget.contentPadding,
         isDense: widget.isDens,
         errorMaxLines: 2,
         hintText: widget.hintText,

@@ -9,6 +9,12 @@ import '../../view/sereen/Booking_screen/screen/create_booking_completed_screen.
 import '../../view/sereen/home_screen/screen/provider_profile_screen.dart';
 import '../../view/sereen/home_screen/screen/gallery_screen.dart';
 import '../../view/sereen/home_screen/screen/all_reviews_screen.dart';
+import '../../view/sereen/rating_screen/screen/overview_rating_screen.dart';
+import '../../view/sereen/message_screen/screen/message_screen.dart';
+import '../../view/sereen/message_screen/screen/inbox_screen.dart';
+import '../../view/sereen/user_profile/screen/user_profile_screen.dart';
+import '../../view/sereen/user_profile/screen/edit_profile_screen.dart';
+import '../../view/sereen/user_profile/screen/saved_provider_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
@@ -35,7 +41,12 @@ class AppRoutes {
   static const String providerProfileScreen = "/ProviderProfileScreen";
   static const String galleryScreen = "/GalleryScreen";
   static const String allReviewsScreen = "/AllReviewsScreen";
-
+  static const String overViewRatingScreen = "/OverviewRatingScreen";
+  static const String messagesScreen = "/MessageScreen";
+  static const String inboxScreen = "/InboxScreen";
+  static const String userProfileScreen = "/UserProfileScreen";
+  static const String editProfileScreen = "/EditProfileScreen";
+  static const String savedProviderScreen = "/SavedProviderScreen";
 
   static List<GetPage> routes = [
 
@@ -62,5 +73,11 @@ class AppRoutes {
     GetPage(name: providerProfileScreen, page: () => ProviderProfileScreen()),
     GetPage(name: galleryScreen, page: () => GalleryScreen()),
     GetPage(name: allReviewsScreen, page: () => AllReviewsScreen()),
+    GetPage(name: overViewRatingScreen, page: () => const OverviewRatingScreen()),
+    GetPage(name: messagesScreen, page: () => MessageScreen()),
+    GetPage(name: inboxScreen, page: () => const InboxScreen()),
+    GetPage(name: userProfileScreen, page: () => const UserProfileScreen()),
+    GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
+    GetPage(name: savedProviderScreen, page: () => const SavedProviderScreen()),
   ];
 }

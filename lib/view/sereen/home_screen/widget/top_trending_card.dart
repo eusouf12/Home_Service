@@ -1,27 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utils/app_colors/app_colors.dart';
+import '../../../../utils/app_const/app_const.dart';
+import '../../../components/custom_netwrok_image/custom_network_image.dart';
 import '../../../components/custom_text/custom_text.dart';
 
 class TopTrendingCard extends StatelessWidget {
-  final Map<String, dynamic> provider;
+
+  final String? imageUrl;
+  final VoidCallback? onTabViewProvider;
+  final VoidCallback? onRequestTap;
+  final bool isFastResponse;
+  final bool isAvailableNow;
+  final bool isVerified;
+  final String name;
+  final String distance;
+  final String travelDistance;
+  final String jobsCompleted;
+  final String rating;
+  final String reviews;
 
   const TopTrendingCard({
     Key? key,
-    required this.provider,
+    this.imageUrl,
+    this.onTabViewProvider,
+    this.onRequestTap,
+    this.isFastResponse = false,
+    this.isAvailableNow = false,
+    this.isVerified = false,
+    required this.name,
+    required this.distance,
+    required this.travelDistance,
+    required this.jobsCompleted,
+    required this.rating,
+    required this.reviews,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool isFastResponse = provider['fastResponse'] ?? false;
-    bool isAvailableNow = provider['availableNow'] ?? false;
-    bool isVerified = provider['isVerified'] ?? false;
-    String name = provider['name'] ?? '';
-    String distance = provider['distance'] ?? '';
-    String travelDistance = provider['travelDistance'] ?? '';
-    String jobsCompleted = provider['jobsCompleted']?.toString() ?? '0';
-    String rating = provider['rating']?.toString() ?? '0.0';
-    String reviews = provider['reviews']?.toString() ?? '0';
 
     Color goldColor = const Color(0xFFB18042);
     Color tealColor = AppColors.primary; 
@@ -47,37 +63,16 @@ class TopTrendingCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Left Icon
-              Container(
-                height: 50.h,
-                width: 50.w,
-                decoration: BoxDecoration(
-                  color: isAvailableNow ? Colors.grey.shade100 : Colors.teal.shade50,
-                  borderRadius: BorderRadius.circular(16.r),
-                  boxShadow: isAvailableNow
-                      ? null
-                      : [
-                          BoxShadow(
-                            color: Colors.white,
-                            blurRadius: 10,
-                            spreadRadius: 2,
-                            offset: const Offset(-2, -2),
-                          ),
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            spreadRadius: 2,
-                            offset: const Offset(2, 2),
-                          )
-                        ],
-                ),
-                child: Icon(
-                  isAvailableNow ? Icons.people : Icons.domain_verification,
-                  color: isAvailableNow ? Colors.blueGrey.shade700 : AppColors.primary,
-                  size: 28.sp,
+               GestureDetector(
+                onTap: onTabViewProvider,
+                child: CustomNetworkImage(
+                  imageUrl: imageUrl ?? AppConstants.girlsPhoto,
+                  height: 50.h,
+                  width: 50.w,
+                  boxShape: BoxShape.circle,
                 ),
               ),
-              SizedBox(width: 12.w),
+             SizedBox(width: 12.w),
               
               // Name and Description
               Expanded(
@@ -165,24 +160,27 @@ class TopTrendingCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-                      decoration: BoxDecoration(
-                        color: goldColor,
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.flash_on, color: Colors.white, size: 18.sp),
-                          SizedBox(width: 4.w),
-                          CustomText(
-                            text: "Instant Request",
-                            color: Colors.white,
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: onRequestTap,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                        decoration: BoxDecoration(
+                          color: goldColor,
+                          borderRadius: BorderRadius.circular(16.r),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.flash_on, color: Colors.white, size: 18.sp),
+                            SizedBox(width: 4.w),
+                            CustomText(
+                              text: "Instant Request",
+                              color: Colors.white,
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -214,24 +212,27 @@ class TopTrendingCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-                      decoration: BoxDecoration(
-                        color: tealColor,
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.phone_in_talk, color: Colors.white, size: 16.sp),
-                          SizedBox(width: 6.w),
-                          CustomText(
-                            text: "Request",
-                            color: Colors.white,
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: onRequestTap,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                        decoration: BoxDecoration(
+                          color: tealColor,
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.phone_in_talk, color: Colors.white, size: 16.sp),
+                            SizedBox(width: 6.w),
+                            CustomText(
+                              text: "Request",
+                              color: Colors.white,
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
