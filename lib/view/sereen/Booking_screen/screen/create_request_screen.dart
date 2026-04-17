@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:home_service/core/app_routes/app_routes.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_royel_appbar/custom_royel_appbar.dart';
@@ -534,7 +535,9 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               fontSize: 16.sp,
               isImageRight: true,
               imageSrc: AppIcons.arrow,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(AppRoutes.createBookingCompletedScreen);
+              },
             ),
             SizedBox(height: 16.h),
             Center(
