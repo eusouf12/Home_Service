@@ -38,7 +38,7 @@ class AppRoutes {
   static const String setNewPassword = "/SetNewPassword";
   static const String chooseRole = "/ChooseRole";
 
-  ///===========================other part Part==========================
+  ///===========================User Part==========================
   static const String singleView = "/SingleView";
   static const String homeScreen = "/HomeScreen";
   static const String filterScreen = "/FilterScreen";
@@ -80,7 +80,7 @@ class AppRoutes {
     // GetPage(name: forgotScreen, page: () => ForgotScreen()),
     // GetPage(name: setNewPassword, page: () => SetNewPassword()),
 
-    ///============== Immigration Seeker ==================
+    ///============== User part ==================
     GetPage(name: homeScreen, page: () => HomeScreen()),
     GetPage(name: filterScreen, page: () => FilterScreen()),
     GetPage(name: bookingScreen, page: () => BookingScreen()),

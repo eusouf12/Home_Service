@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/app_routes/app_routes.dart';
+import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/app_icons/app_icons.dart';
 
 class CustomNavBar extends StatefulWidget {
@@ -57,8 +58,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    const Color(0xFF5BD7BC).withValues(alpha: 0.8),
-                    const Color(0xFF5BD7BC).withValues(alpha: 0.0),
+                    AppColors.navbarColor,
+                    AppColors.white,
                   ],
                 ),
               ),
@@ -101,7 +102,17 @@ class _CustomNavBarState extends State<CustomNavBar> {
         width: 62.w,
         height: 62.w,
         decoration: BoxDecoration(
-          color: const Color(0xFF161616),
+          color: isSelected ? null : const Color(0xFF161616),
+          gradient: isSelected
+              ? const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppColors.navbarColor1,
+                    AppColors.navbarColor2,
+                  ],
+                )
+              : null,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
@@ -129,7 +140,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
               Icon(
                 icon,
                 size: 24.sp,
-                color: isSelected ? const Color(0xFF5BD7BC) : Colors.white,
+                color: Colors.white,
               ),
 
             isImage ? const SizedBox.shrink() : SizedBox(height: 3.h),

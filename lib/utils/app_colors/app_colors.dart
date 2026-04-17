@@ -5,6 +5,9 @@ class AppColors {
   static const Color primary = Color(0xFF0E7C6B);
   static const Color brownColor =  Color(0xFFB17D47);
   static const Color primary1 = Color(0xff1565C0);
+  static const Color navbarColor = Color(0xff357A72);
+  static const Color navbarColor1 = Color(0xff207B6D);
+  static const Color navbarColor2 = Color(0xff1F2022);
 
   static const Color lightRed = Color(0xffFDE8E9);
   static const Color black = Color(0xff0E0E0E);
