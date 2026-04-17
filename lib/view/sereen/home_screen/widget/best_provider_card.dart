@@ -18,6 +18,8 @@ class BestProviderCard extends StatelessWidget {
   final VoidCallback? onCall;
   final VoidCallback? onMessage;
   final VoidCallback? onRequest;
+  final VoidCallback? onTabViewProvider;
+  final VoidCallback? onTabAddFavourite;
 
   const BestProviderCard({
     super.key,
@@ -32,6 +34,8 @@ class BestProviderCard extends StatelessWidget {
     this.onMessage,
     this.onRequest,
     this.imageUrl,
+    this.onTabViewProvider,
+    this.onTabAddFavourite,
   });
 
   @override
@@ -57,7 +61,15 @@ class BestProviderCard extends StatelessWidget {
           /// Top
           Row(
             children: [
-              CustomNetworkImage(imageUrl: imageUrl ?? AppConstants.girlsPhoto, height: 50.h, width: 50.w,boxShape: BoxShape.circle,),
+              GestureDetector(
+                onTap: onTabViewProvider,
+                child: CustomNetworkImage(
+                  imageUrl: imageUrl ?? AppConstants.girlsPhoto,
+                  height: 50.h,
+                  width: 50.w,
+                  boxShape: BoxShape.circle,
+                ),
+              ),
               SizedBox(width: 12.w),
 
               Expanded(
@@ -95,7 +107,7 @@ class BestProviderCard extends StatelessWidget {
                               ],
                             ),
                           ),
-                        Icon(Icons.favorite_border, color: AppColors.primary),
+                        GestureDetector(onTap: onTabAddFavourite,child: Icon(Icons.favorite_border, color: AppColors.primary)),
                       ],
                     ),
 

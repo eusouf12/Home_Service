@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:home_service/utils/ToastMsg/toast_message.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
 import '../../../../core/app_routes/app_routes.dart';
@@ -331,6 +332,13 @@ class HomeScreen extends StatelessWidget {
                         },
                         onRequest: () {
                           debugPrint("Request clicked");
+                        },
+                        onTabViewProvider: () {
+                           Get.toNamed(AppRoutes.providerProfileScreen);
+                        },
+                        onTabAddFavourite: () {
+                           showCustomSnackBar("Provider Added to Favourite",isError: false);
+                           debugPrint("Add Favourite clicked");
                         },
                       );
                     },
