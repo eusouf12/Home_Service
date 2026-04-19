@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../../core/app_routes/app_routes.dart';
-import '../../../utils/app_colors/app_colors.dart';
-import '../../../utils/app_icons/app_icons.dart';
+import '../../../../../utils/app_colors/app_colors.dart';
 
 class ProviderNavBar extends StatefulWidget {
   final int currentIndex;
@@ -32,7 +29,7 @@ class _ProviderNavBarState extends State<ProviderNavBar> {
         borderRadius: BorderRadius.circular(40.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 15,
             spreadRadius: 2,
             offset: const Offset(0, 5),

@@ -26,6 +26,7 @@ import '../../view/sereen/User part/home_screen/screen/gallery_screen.dart';
 import '../../view/sereen/User part/home_screen/screen/all_reviews_screen.dart';
 import '../../view/sereen/User part/user_profile/screen/saved_address_screen.dart';
 import '../../view/sereen/Provider Part/onboarding_screen/screen/provider_onboarding_screen.dart';
+import '../../view/sereen/Provider Part/home Screen/screen/provider_home_screen.dart';
 import '../../view/sereen/Provider Part/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
@@ -41,6 +42,7 @@ class AppRoutes {
   static const String setNewPassword = "/SetNewPassword";
   static const String chooseRole = "/ChooseRole";
   static const String providerOnboardingScreen = "/ProviderOnboardingScreen";
+  static const String providerHomeScreen = "/ProviderHomeScreen";
 
   ///===========================User Part==========================
   static const String singleView = "/SingleView";
@@ -112,6 +114,7 @@ class AppRoutes {
     GetPage(name: addNewAddressScreen, page: () => const AddNewAddressScreen()),
     GetPage(name: logoutSuccessScreen, page: () => const LogoutSuccessScreen()),
     GetPage(name: providerOnboardingScreen, page: () => const ProviderOnboardingScreen()),
+    GetPage(name: providerHomeScreen, page: () => const ProviderHomeScreen()),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
   ];
 }

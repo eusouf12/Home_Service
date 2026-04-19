@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_text_field/custom_text_field.dart';
+import '../../../../../core/app_routes/app_routes.dart';
 import '../controller/provider_onboarding_controller.dart';
 
 class ProviderOnboardingScreen extends StatelessWidget {
@@ -290,7 +291,7 @@ class ProviderOnboardingScreen extends StatelessWidget {
               textColor: Colors.white,
               borderRadius: 28.r,
               onTap: () {
-                Get.toNamed("/Home"); // Placeholder
+                Get.toNamed(AppRoutes.providerHomeScreen); 
               },
             ),
             
