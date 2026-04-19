@@ -25,6 +25,8 @@ import '../../view/sereen/User part/home_screen/screen/provider_profile_screen.d
 import '../../view/sereen/User part/home_screen/screen/gallery_screen.dart';
 import '../../view/sereen/User part/home_screen/screen/all_reviews_screen.dart';
 import '../../view/sereen/User part/user_profile/screen/saved_address_screen.dart';
+import '../../view/sereen/Provider Part/onboarding_screen/screen/provider_onboarding_screen.dart';
+import '../../view/sereen/Provider Part/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
@@ -38,6 +40,7 @@ class AppRoutes {
   static const String forgotScreen = "/ForgotScreen";
   static const String setNewPassword = "/SetNewPassword";
   static const String chooseRole = "/ChooseRole";
+  static const String providerOnboardingScreen = "/ProviderOnboardingScreen";
 
   ///===========================User Part==========================
   static const String singleView = "/SingleView";
@@ -71,7 +74,7 @@ class AppRoutes {
   static List<GetPage> routes = [
 
     ///===========================Authentication==========================
-    // GetPage(name: splashScreen, page: () => Splashscreen()),
+    GetPage(name: splashScreen, page: () => const SplashScreen()),
     // GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
     // GetPage(name: chooseRole, page: () => ChooseRole()),
     // GetPage(name: loginOnlyScreen, page: () => LoginOnlyScreen()),
@@ -108,6 +111,7 @@ class AppRoutes {
     GetPage(name: savedAddressScreen, page: () => const SavedAddressScreen()),
     GetPage(name: addNewAddressScreen, page: () => const AddNewAddressScreen()),
     GetPage(name: logoutSuccessScreen, page: () => const LogoutSuccessScreen()),
+    GetPage(name: providerOnboardingScreen, page: () => const ProviderOnboardingScreen()),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
   ];
 }

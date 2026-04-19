@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 
+import '../../../../../core/app_routes/app_routes.dart';
+
 class BecomeProviderScreen extends StatelessWidget {
   const BecomeProviderScreen({super.key});
 
@@ -75,7 +77,9 @@ class BecomeProviderScreen extends StatelessWidget {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 borderRadius: 26.r,
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.splashScreen);
+                },
               ),
               SizedBox(height: 16.h),
               CustomText(

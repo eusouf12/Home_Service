@@ -24,6 +24,6 @@ class AppImages {
   static const String qrImage = "$basePath/qrImage.png";
   static const String noImage = "$basePath/noImage.png";
   static const String advice = "$basePath/advice.svg";
-
-
+  static const String providerWelcome = "$basePath/provider_welcome.png";
+  static const String providerLogoIcon = "$basePath/logo_icon.png";
 }
