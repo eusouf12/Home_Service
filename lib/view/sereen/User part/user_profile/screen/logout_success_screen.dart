@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 
-import '../../../../core/app_routes/app_routes.dart';
+import '../../../../../core/app_routes/app_routes.dart' show AppRoutes;
 
 class LogoutSuccessScreen extends StatelessWidget {
   const LogoutSuccessScreen({super.key});

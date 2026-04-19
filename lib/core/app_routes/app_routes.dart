@@ -1,29 +1,30 @@
 import 'package:get/get.dart';
-import '../../view/sereen/home_screen/screen/filtter_screen.dart';
-import '../../view/sereen/home_screen/screen/home_screen.dart';
-import '../../view/sereen/Booking_screen/screen/booking_screen.dart';
-import '../../view/sereen/Booking_screen/screen/booking_details_screen.dart';
-import '../../view/sereen/Booking_screen/screen/create_request_screen.dart';
-import '../../view/sereen/rating_screen/screen/rating_screen.dart';
-import '../../view/sereen/Booking_screen/screen/create_booking_completed_screen.dart';
-import '../../view/sereen/home_screen/screen/provider_profile_screen.dart';
-import '../../view/sereen/home_screen/screen/gallery_screen.dart';
-import '../../view/sereen/home_screen/screen/all_reviews_screen.dart';
-import '../../view/sereen/rating_screen/screen/overview_rating_screen.dart';
-import '../../view/sereen/message_screen/screen/message_screen.dart';
-import '../../view/sereen/message_screen/screen/inbox_screen.dart';
-import '../../view/sereen/user_profile/screen/help_support_screen.dart';
-import '../../view/sereen/user_profile/screen/user_profile_screen.dart';
-import '../../view/sereen/user_profile/screen/edit_profile_screen.dart';
-import '../../view/sereen/user_profile/screen/saved_provider_screen.dart';
-import '../../view/sereen/user_profile/screen/payment_history_screen.dart';
-import '../../view/sereen/user_profile/screen/privacy_security_screen.dart';
-import '../../view/sereen/user_profile/screen/change_password_screen.dart';
-import '../../view/sereen/user_profile/screen/legal_policies_screen.dart';
-import '../../view/sereen/user_profile/screen/become_provider_screen.dart';
-import '../../view/sereen/user_profile/screen/saved_address_screen.dart';
-import '../../view/sereen/user_profile/screen/add_new_address_screen.dart';
-import '../../view/sereen/user_profile/screen/logout_success_screen.dart';
+import 'package:home_service/view/sereen/User%20part/message_screen/screen/message_screen.dart' show MessageScreen;
+import 'package:home_service/view/sereen/User%20part/rating_screen/screen/overview_rating_screen.dart' show OverviewRatingScreen;
+import 'package:home_service/view/sereen/User%20part/user_profile/screen/add_new_address_screen.dart' show AddNewAddressScreen;
+import 'package:home_service/view/sereen/User%20part/user_profile/screen/logout_success_screen.dart' show LogoutSuccessScreen;
+import '../../view/sereen/User part/Booking_screen/screen/booking_details_screen.dart';
+import '../../view/sereen/User part/Booking_screen/screen/booking_screen.dart';
+import '../../view/sereen/User part/Booking_screen/screen/create_booking_completed_screen.dart';
+import '../../view/sereen/User part/Booking_screen/screen/create_request_screen.dart';
+import '../../view/sereen/User part/home_screen/screen/filtter_screen.dart';
+import '../../view/sereen/User part/home_screen/screen/home_screen.dart';
+import '../../view/sereen/User part/message_screen/screen/inbox_screen.dart';
+import '../../view/sereen/User part/notification_screen/notification_screen.dart';
+import '../../view/sereen/User part/rating_screen/screen/rating_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/become_provider_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/change_password_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/edit_profile_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/help_support_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/legal_policies_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/payment_history_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/privacy_security_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/saved_provider_screen.dart' show SavedProviderScreen;
+import '../../view/sereen/User part/user_profile/screen/user_profile_screen.dart' show UserProfileScreen;
+import '../../view/sereen/User part/home_screen/screen/provider_profile_screen.dart';
+import '../../view/sereen/User part/home_screen/screen/gallery_screen.dart';
+import '../../view/sereen/User part/home_screen/screen/all_reviews_screen.dart';
+import '../../view/sereen/User part/user_profile/screen/saved_address_screen.dart';
 
 class AppRoutes {
   ///===========================Authentication==========================
@@ -65,6 +66,7 @@ class AppRoutes {
   static const String savedAddressScreen = "/SavedAddressScreen";
   static const String addNewAddressScreen = "/AddNewAddressScreen";
   static const String logoutSuccessScreen = "/LogoutSuccessScreen";
+  static const String notificationScreen = "/NotificationScreen";
 
   static List<GetPage> routes = [
 
@@ -106,5 +108,6 @@ class AppRoutes {
     GetPage(name: savedAddressScreen, page: () => const SavedAddressScreen()),
     GetPage(name: addNewAddressScreen, page: () => const AddNewAddressScreen()),
     GetPage(name: logoutSuccessScreen, page: () => const LogoutSuccessScreen()),
+    GetPage(name: notificationScreen, page: () => const NotificationScreen()),
   ];
 }

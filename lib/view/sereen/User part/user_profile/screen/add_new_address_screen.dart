@@ -5,9 +5,9 @@ import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_text_field/custom_text_field.dart';
-import 'package:home_service/view/sereen/user_profile/widgets/address_label_chip.dart';
-import '../../../../core/app_routes/app_routes.dart';
+import '../../../../../core/app_routes/app_routes.dart';
 import '../controller/add_new_address_controller.dart';
+import '../widgets/address_label_chip.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
   const AddNewAddressScreen({super.key});

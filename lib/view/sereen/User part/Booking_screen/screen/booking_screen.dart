@@ -5,7 +5,7 @@ import 'package:home_service/view/components/custom_gradient/custom_gradient.dar
 import 'package:home_service/view/components/custom_nav_bar/navbar.dart';
 import 'package:home_service/view/components/custom_royel_appbar/custom_royel_appbar.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
-import '../../../../core/app_routes/app_routes.dart';
+import '../../../../../core/app_routes/app_routes.dart';
 import '../controller/booking_controller.dart';
 import '../widget/booking_card.dart';
 import '../widget/past_booking_card.dart';

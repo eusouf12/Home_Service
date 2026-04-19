@@ -6,8 +6,9 @@ import 'package:home_service/view/components/custom_gradient/custom_gradient.dar
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_nav_bar/navbar.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
-import '../../../../utils/app_colors/app_colors.dart';
-import '../../../components/custom_show_popup/custom_show_popup.dart';
+
+import '../../../../../utils/app_colors/app_colors.dart';
+import '../../../../components/custom_show_popup/custom_show_popup.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -388,7 +389,9 @@ class UserProfileScreen extends StatelessWidget {
                   SizedBox(height: 16.h),
                   
                   // List Tiles
-                  _buildListTile(Icons.notifications_none, "Notifications"),
+                  _buildListTile(Icons.notifications_none, "Notifications", onTap: () {
+                    Get.toNamed(AppRoutes.notificationScreen);
+                  }),
                   _buildListTile(Icons.lock_outline, "Privacy & Security", onTap: () {
                     Get.toNamed(AppRoutes.privacySecurityScreen);
                   }),

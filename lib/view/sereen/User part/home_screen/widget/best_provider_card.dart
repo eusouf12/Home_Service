@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_service/utils/app_const/app_const.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
-import '../../../../utils/app_colors/app_colors.dart';
-import '../../../components/custom_button/custom_button.dart';
-import '../../../components/custom_text/custom_text.dart';
+import '../../../../../utils/app_colors/app_colors.dart';
+import '../../../../components/custom_button/custom_button.dart';
+import '../../../../components/custom_text/custom_text.dart';
 
 class BestProviderCard extends StatelessWidget {
   final String name;

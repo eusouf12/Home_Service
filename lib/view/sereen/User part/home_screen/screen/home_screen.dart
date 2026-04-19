@@ -4,16 +4,16 @@ import 'package:get/get.dart';
 import 'package:home_service/utils/ToastMsg/toast_message.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_netwrok_image/custom_network_image.dart';
-import '../../../../core/app_routes/app_routes.dart';
-import '../../../../utils/app_colors/app_colors.dart';
-import '../../../../utils/app_icons/app_icons.dart';
-import '../../../components/custom_image/custom_image.dart';
-import '../../../components/custom_text/custom_text.dart';
-import '../../../components/custom_text_field/custom_text_field.dart';
+import '../../../../../core/app_routes/app_routes.dart';
+import '../../../../../utils/app_colors/app_colors.dart';
+import '../../../../../utils/app_icons/app_icons.dart';
+import '../../../../components/custom_image/custom_image.dart';
+import '../../../../components/custom_text/custom_text.dart';
+import '../../../../components/custom_text_field/custom_text_field.dart';
 import '../controller/home_controller.dart';
 import '../widget/best_provider_card.dart';
 import '../widget/top_trending_card.dart';
-import '../../../components/custom_nav_bar/navbar.dart';
+import '../../../../components/custom_nav_bar/navbar.dart';
 import 'language_selected_screen.dart';
 
 // ignore: must_be_immutable

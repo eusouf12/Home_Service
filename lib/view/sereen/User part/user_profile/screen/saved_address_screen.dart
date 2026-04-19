@@ -5,8 +5,9 @@ import 'package:home_service/core/app_routes/app_routes.dart';
 import 'package:home_service/view/components/custom_button/custom_button.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
-import 'package:home_service/view/sereen/user_profile/widgets/other_location_card.dart';
-import 'package:home_service/view/sereen/user_profile/widgets/primary_location_card.dart';
+
+import '../widgets/other_location_card.dart';
+import '../widgets/primary_location_card.dart';
 
 class SavedAddressScreen extends StatelessWidget {
   const SavedAddressScreen({super.key});

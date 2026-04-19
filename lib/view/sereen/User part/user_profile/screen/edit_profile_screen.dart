@@ -6,7 +6,7 @@ import 'package:home_service/view/components/custom_gradient/custom_gradient.dar
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_text_field/custom_text_field.dart';
 
-import '../../../../utils/app_colors/app_colors.dart';
+import '../../../../../utils/app_colors/app_colors.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

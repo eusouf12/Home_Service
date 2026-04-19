@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../components/custom_button/custom_button.dart';
-import '../../../components/custom_text/custom_text.dart';
+import '../../../../components/custom_button/custom_button.dart';
+import '../../../../components/custom_text/custom_text.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
