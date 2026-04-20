@@ -134,95 +134,98 @@ class ProviderHomeScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     ///==================== AI Insights Card ====================
-                    Container(
-                      padding: EdgeInsets.all(20.w),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF1F5F9),
-                        borderRadius: BorderRadius.circular(24.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.2),
-                            blurRadius: 20,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.auto_awesome,
-                                color: const Color(0xFF1E1E4B),
-                                size: 20.sp,
-                              ),
-                              SizedBox(width: 8.w),
-                              CustomText(
-                                text: "AI Insights",
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFF1E1E4B),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 12.h),
-                          CustomText(
-                            text:
-                                "You're in the top 5% of providers this week! Your response time is excellent.",
-                            fontSize: 13.sp,
-                            color: const Color(0xFF475569),
-                            textAlign: TextAlign.start,
-                          ),
-                          SizedBox(height: 20.h),
-                          Container(
-                            padding: EdgeInsets.all(16.w),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.6),
-                              borderRadius: BorderRadius.circular(16.r),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.02),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppRoutes.providerAnalyticsScreen),
+                      child: Container(
+                        padding: EdgeInsets.all(20.w),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF1F5F9),
+                          borderRadius: BorderRadius.circular(24.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.2),
+                              blurRadius: 20,
+                              offset: const Offset(0, 2),
                             ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
                               children: [
                                 Icon(
-                                  Icons.lightbulb_outline,
+                                  Icons.auto_awesome,
                                   color: const Color(0xFF1E1E4B),
-                                  size: 18.sp,
+                                  size: 20.sp,
                                 ),
-                                SizedBox(width: 12.w),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      CustomText(
-                                        text: "PRO TIP",
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: const Color(0xFF1E1E4B),
-                                      ),
-                                      SizedBox(height: 4.h),
-                                      CustomText(
-                                        text:
-                                            "Adding more portfolio photos can increase leads by up to 20%.",
-                                        fontSize: 12.sp,
-                                        color: const Color(0xFF64748B),
-                                        textAlign: TextAlign.start,
-                                      ),
-                                    ],
-                                  ),
+                                SizedBox(width: 8.w),
+                                CustomText(
+                                  text: "AI Insights",
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: const Color(0xFF1E1E4B),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 12.h),
+                            CustomText(
+                              text:
+                                  "You're in the top 5% of providers this week! Your response time is excellent.",
+                              fontSize: 13.sp,
+                              color: const Color(0xFF475569),
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(height: 20.h),
+                            Container(
+                              padding: EdgeInsets.all(16.w),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.6),
+                                borderRadius: BorderRadius.circular(16.r),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.02),
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.lightbulb_outline,
+                                    color: const Color(0xFF1E1E4B),
+                                    size: 18.sp,
+                                  ),
+                                  SizedBox(width: 12.w),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        CustomText(
+                                          text: "PRO TIP",
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: const Color(0xFF1E1E4B),
+                                        ),
+                                        SizedBox(height: 4.h),
+                                        CustomText(
+                                          text:
+                                              "Adding more portfolio photos can increase leads by up to 20%.",
+                                          fontSize: 12.sp,
+                                          color: const Color(0xFF64748B),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
@@ -251,7 +254,7 @@ class ProviderHomeScreen extends StatelessWidget {
                           Icons.mail_outline,
                           Colors.white,
                           const Color(0xFF1E293B),
-                          onTap: () => Get.toNamed(AppRoutes.messagesScreen),
+                          onTap: () => Get.toNamed(AppRoutes.providerMessageScreen),
                         ),
                         _buildActionButton(
                           "Boost",

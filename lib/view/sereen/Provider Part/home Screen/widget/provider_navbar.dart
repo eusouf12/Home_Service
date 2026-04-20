@@ -147,7 +147,7 @@ class _ProviderNavBarState extends State<ProviderNavBar> {
       } else if (index == 1) {
         Get.toNamed(AppRoutes.providerBookingScreen);
       } else if (index == 2) {
-        // Get.toNamed(AppRoutes.messagesScreen);
+         Get.toNamed(AppRoutes.providerMessageScreen);
       } else if (index == 3) {
         // Get.toNamed(AppRoutes.providerProfileScreen);
       } else if (index == 4) {
