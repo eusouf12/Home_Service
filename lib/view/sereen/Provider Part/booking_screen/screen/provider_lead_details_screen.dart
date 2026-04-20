@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 
+import '../../../../../core/app_routes/app_routes.dart';
+
 class ProviderLeadDetailsScreen extends StatelessWidget {
   final bool isCompleted;
   const ProviderLeadDetailsScreen({this.isCompleted = false, super.key});
@@ -308,20 +310,23 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                           SizedBox(width: 12.w),
                           Expanded(
                             flex: 2,
-                            child: Container(
-                              height: 52.h,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF1E1E4B),
-                                borderRadius: BorderRadius.circular(16.r),
-                              ),
-                              alignment: Alignment.center,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CustomText(text: "Accept Lead", fontSize: 15.sp, fontWeight: FontWeight.w800, color: Colors.white),
-                                  SizedBox(width: 8.w),
-                                  Icon(Icons.bolt, color: Colors.white, size: 18.sp),
-                                ],
+                            child: GestureDetector(
+                              onTap: () => Get.toNamed(AppRoutes.providerLeadSuccessScreen),
+                              child: Container(
+                                height: 52.h,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF1E1E4B),
+                                  borderRadius: BorderRadius.circular(16.r),
+                                ),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CustomText(text: "Accept Lead", fontSize: 15.sp, fontWeight: FontWeight.w800, color: Colors.white),
+                                    SizedBox(width: 8.w),
+                                    Icon(Icons.bolt, color: Colors.white, size: 18.sp),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

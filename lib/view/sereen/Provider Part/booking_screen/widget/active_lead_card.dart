@@ -183,32 +183,35 @@ class ActiveLeadCard extends StatelessWidget {
                 SizedBox(width: 12.w),
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    height: 48.h,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1E1E4B),
-                      borderRadius: BorderRadius.circular(30.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF1E1E4B).withValues(alpha: 0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
-                    ),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomText(
-                          text: "Accept Lead",
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
-                        SizedBox(width: 8.w),
-                        Icon(Icons.bolt, color: Colors.white, size: 16.sp),
-                      ],
+                  child: GestureDetector(
+                    onTap: () => Get.toNamed(AppRoutes.providerLeadSuccessScreen),
+                    child: Container(
+                      height: 48.h,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1E1E4B),
+                        borderRadius: BorderRadius.circular(30.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF1E1E4B).withValues(alpha: 0.3),
+                            blurRadius: 12,
+                            offset: const Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            text: "Accept Lead",
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 8.w),
+                          Icon(Icons.bolt, color: Colors.white, size: 16.sp),
+                        ],
+                      ),
                     ),
                   ),
                 ),

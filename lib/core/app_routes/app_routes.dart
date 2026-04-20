@@ -25,7 +25,9 @@ import '../../view/sereen/User part/home_screen/screen/provider_profile_screen.d
 import '../../view/sereen/User part/home_screen/screen/gallery_screen.dart';
 import '../../view/sereen/User part/home_screen/screen/all_reviews_screen.dart';
 import '../../view/sereen/User part/user_profile/screen/saved_address_screen.dart';
+import '../../view/sereen/Provider Part/booking_screen/screen/job_details_screen.dart';
 import '../../view/sereen/Provider Part/booking_screen/screen/provider_lead_details_screen.dart';
+import '../../view/sereen/Provider Part/booking_screen/screen/provider_lead_success_screen.dart';
 import '../../view/sereen/Provider Part/onboarding_screen/screen/provider_onboarding_screen.dart';
 import '../../view/sereen/Provider Part/home Screen/screen/provider_home_screen.dart';
 import '../../view/sereen/Provider Part/booking_screen/screen/provider_booking_screen.dart';
@@ -48,6 +50,8 @@ class AppRoutes {
   static const String providerBookingScreen = "/ProviderBookingScreen";
   static const String providerLeadDetailsScreen = "/ProviderLeadDetailsScreen";
   static const String providerCompletedLeadDetailsScreen = "/ProviderCompletedLeadDetailsScreen";
+  static const String providerLeadSuccessScreen = "/ProviderLeadSuccessScreen";
+  static const String jobDetailsScreen = "/JobDetailsScreen";
 
   ///===========================User Part==========================
   static const String singleView = "/SingleView";
@@ -123,6 +127,8 @@ class AppRoutes {
     GetPage(name: providerBookingScreen, page: () => const ProviderBookingScreen()),
     GetPage(name: providerLeadDetailsScreen, page: () => const ProviderLeadDetailsScreen(isCompleted: false)),
     GetPage(name: providerCompletedLeadDetailsScreen, page: () => const ProviderLeadDetailsScreen(isCompleted: true)),
+    GetPage(name: providerLeadSuccessScreen, page: () => const ProviderLeadSuccessScreen()),
+    GetPage(name: jobDetailsScreen, page: () => const JobDetailsScreen()),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
   ];
 }
