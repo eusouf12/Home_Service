@@ -41,7 +41,7 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20.h),
-              
+
               ///==================== Issue Media ====================
               CustomText(
                 text: "ISSUE MEDIA",
@@ -55,27 +55,37 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    _buildMediaImage("https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=500"),
-                    _buildMediaImage("https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&q=80&w=500"),
-                    _buildMediaImage("https://images.unsplash.com/photo-1454165833767-1314dddb7bc3?auto=format&fit=crop&q=80&w=500"),
+                    _buildMediaImage(
+                      "https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=500",
+                    ),
+                    _buildMediaImage(
+                      "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&q=80&w=500",
+                    ),
+                    _buildMediaImage(
+                      "https://images.unsplash.com/photo-1454165833767-1314dddb7bc3?auto=format&fit=crop&q=80&w=500",
+                    ),
                   ],
                 ),
               ),
-              
+
               SizedBox(height: 32.h),
-              
+
               ///==================== Stats Row ====================
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildStatItem(Icons.business_center, "CATEGORY", "HVAC"),
                   _buildStatItem(Icons.priority_high, "URGENCY", "Urgent"),
-                  _buildStatItem(Icons.payments_outlined, "EST. VALUE", "\$450.00"),
+                  _buildStatItem(
+                    Icons.payments_outlined,
+                    "EST. VALUE",
+                    "\$450.00",
+                  ),
                 ],
               ),
-              
+
               SizedBox(height: 32.h),
-              
+
               ///==================== Customer Description ====================
               CustomText(
                 text: "CUSTOMER DESCRIPTION",
@@ -102,10 +112,15 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                     Positioned(
                       top: 0,
                       right: 0,
-                      child: Icon(Icons.format_quote, color: const Color(0xFFE2E8F0), size: 48.sp),
+                      child: Icon(
+                        Icons.format_quote,
+                        color: const Color(0xFFE2E8F0),
+                        size: 48.sp,
+                      ),
                     ),
                     CustomText(
-                      text: "My central AC unit started making a loud rattling noise this morning and the air coming out isn't cold anymore. It's an older Trane model. Need someone to take a look as soon as possible before the weekend heatwave.",
+                      text:
+                          "My central AC unit started making a loud rattling noise this morning and the air coming out isn't cold anymore. It's an older Trane model. Need someone to take a look as soon as possible before the weekend heatwave.",
                       fontSize: 14.sp,
                       color: const Color(0xFF475569),
                       textAlign: TextAlign.start,
@@ -114,9 +129,9 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               SizedBox(height: 32.h),
-              
+
               ///==================== Approximate Location ====================
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,9 +159,9 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              
+
               SizedBox(height: 32.h),
-              
+
               ///==================== Preferred Schedule ====================
               CustomText(
                 text: "PREFERRED SCHEDULE",
@@ -180,8 +195,18 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomText(text: "OCT", fontSize: 8.sp, fontWeight: FontWeight.bold, color: const Color(0xFF64748B)),
-                          CustomText(text: "24", fontSize: 18.sp, fontWeight: FontWeight.w900, color: const Color(0xFF1E293B)),
+                          CustomText(
+                            text: "OCT",
+                            fontSize: 8.sp,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF64748B),
+                          ),
+                          CustomText(
+                            text: "24",
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w900,
+                            color: const Color(0xFF1E293B),
+                          ),
                         ],
                       ),
                     ),
@@ -191,7 +216,9 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(
-                            text: isCompleted ? "Thursday" : "Tomorrow, Thursday",
+                            text: isCompleted
+                                ? "Thursday"
+                                : "Tomorrow, Thursday",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.bold,
                             color: const Color(0xFF1E293B),
@@ -204,13 +231,17 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Icon(Icons.calendar_month_outlined, color: const Color(0xFF94A3B8), size: 24.sp),
+                    Icon(
+                      Icons.calendar_month_outlined,
+                      color: const Color(0xFF94A3B8),
+                      size: 24.sp,
+                    ),
                   ],
                 ),
               ),
-              
+
               SizedBox(height: 40.h),
-              
+
               ///==================== Footer Card ====================
               Container(
                 padding: EdgeInsets.all(24.w),
@@ -229,7 +260,11 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12.r),
                           ),
-                          child: Icon(Icons.plumbing, color: const Color(0xFF1E1E4B), size: 24.sp),
+                          child: Icon(
+                            Icons.plumbing,
+                            color: const Color(0xFF1E1E4B),
+                            size: 24.sp,
+                          ),
                         ),
                         SizedBox(width: 16.w),
                         Expanded(
@@ -259,8 +294,18 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomText(text: "LOCATION", fontSize: 8.sp, fontWeight: FontWeight.w900, color: const Color(0xFF94A3B8)),
-                              CustomText(text: "2 miles away", fontSize: 12.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                              CustomText(
+                                text: "LOCATION",
+                                fontSize: 8.sp,
+                                fontWeight: FontWeight.w900,
+                                color: const Color(0xFF94A3B8),
+                              ),
+                              CustomText(
+                                text: "2 miles away",
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF1E293B),
+                              ),
                             ],
                           ),
                         ),
@@ -268,8 +313,18 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomText(text: "ESTIMATE", fontSize: 8.sp, fontWeight: FontWeight.w900, color: const Color(0xFF94A3B8)),
-                              CustomText(text: "\$150 - \$200", fontSize: 12.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                              CustomText(
+                                text: "ESTIMATE",
+                                fontSize: 8.sp,
+                                fontWeight: FontWeight.w900,
+                                color: const Color(0xFF94A3B8),
+                              ),
+                              CustomText(
+                                text: "\$150 - \$200",
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF1E293B),
+                              ),
                             ],
                           ),
                         ),
@@ -301,17 +356,26 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(16.r),
-                                border: Border.all(color: const Color(0xFFE2E8F0)),
+                                border: Border.all(
+                                  color: const Color(0xFFE2E8F0),
+                                ),
                               ),
                               alignment: Alignment.center,
-                              child: CustomText(text: "Decline", fontSize: 14.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                              child: CustomText(
+                                text: "Decline",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF1E293B),
+                              ),
                             ),
                           ),
                           SizedBox(width: 12.w),
                           Expanded(
                             flex: 2,
                             child: GestureDetector(
-                              onTap: () => Get.toNamed(AppRoutes.providerLeadSuccessScreen),
+                              onTap: () => Get.toNamed(
+                                AppRoutes.providerLeadSuccessScreen,
+                              ),
                               child: Container(
                                 height: 52.h,
                                 decoration: BoxDecoration(
@@ -322,9 +386,18 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    CustomText(text: "Accept Lead", fontSize: 15.sp, fontWeight: FontWeight.w800, color: Colors.white),
+                                    CustomText(
+                                      text: "Accept Lead",
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white,
+                                    ),
                                     SizedBox(width: 8.w),
-                                    Icon(Icons.bolt, color: Colors.white, size: 18.sp),
+                                    Icon(
+                                      Icons.bolt,
+                                      color: Colors.white,
+                                      size: 18.sp,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -374,8 +447,18 @@ class ProviderLeadDetailsScreen extends StatelessWidget {
         children: [
           Icon(icon, color: const Color(0xFF1E293B), size: 20.sp),
           SizedBox(height: 8.h),
-          CustomText(text: label, fontSize: 8.sp, fontWeight: FontWeight.w900, color: const Color(0xFF94A3B8)),
-          CustomText(text: value, fontSize: 13.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+          CustomText(
+            text: label,
+            fontSize: 8.sp,
+            fontWeight: FontWeight.w900,
+            color: const Color(0xFF94A3B8),
+          ),
+          CustomText(
+            text: value,
+            fontSize: 13.sp,
+            fontWeight: FontWeight.bold,
+            color: const Color(0xFF1E293B),
+          ),
         ],
       ),
     );
