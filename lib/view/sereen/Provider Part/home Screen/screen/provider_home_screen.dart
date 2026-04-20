@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:home_service/utils/app_images/app_images.dart';
 import 'package:home_service/view/components/custom_gradient/custom_gradient.dart';
 import 'package:home_service/view/components/custom_text/custom_text.dart';
+import '../../../../../core/app_routes/app_routes.dart';
 import '../controller/provider_home_controller.dart';
 import '../widget/provider_navbar.dart';
 
@@ -14,11 +15,70 @@ class ProviderHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ProviderHomeController());
 
-    return Scaffold(
-      body: CustomGradient(
-        color1: const Color(0xFFF3F7F8),
-        color2: const Color(0xFFF9FAFB),
-        child: Column(
+    return CustomGradient(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.h),
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 24.r,
+                    backgroundImage: const AssetImage(AppImages.providerAvatar),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          text: "WELCOME BACK",
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF94A3B8),
+                        ),
+                        CustomText(
+                          text: "Allneeda Provider",
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF1E293B),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(8.w),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.notificationScreen);
+                      },
+                      child: Icon(
+                        Icons.notifications_none,
+                        color: const Color(0xFF475569),
+                        size: 24.sp,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        body: Column(
           children: [
             Expanded(
               child: SingleChildScrollView(
@@ -26,64 +86,13 @@ class ProviderHomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 50.h),
-
-                    ///==================== Header ====================
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 24.r,
-                          backgroundImage: const AssetImage(
-                            AppImages.providerAvatar,
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                text: "WELCOME BACK",
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFF94A3B8),
-                              ),
-                              CustomText(
-                                text: "Allneeda Provider",
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFF1E293B),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(8.w),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
-                                blurRadius: 10,
-                              ),
-                            ],
-                          ),
-                          child: Icon(
-                            Icons.notifications_none,
-                            color: const Color(0xFF475569),
-                            size: 24.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(height: 32.h),
+                    SizedBox(height: 20.h),
 
                     ///==================== Stats Grid ====================
                     GridView.count(
                       crossAxisCount: 2,
                       shrinkWrap: true,
+                      padding: EdgeInsets.zero,
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 16.w,
                       mainAxisSpacing: 16.h,
@@ -123,9 +132,7 @@ class ProviderHomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    SizedBox(height: 24.h),
-
+                    SizedBox(height: 16.h),
                     ///==================== AI Insights Card ====================
                     Container(
                       padding: EdgeInsets.all(20.w),
@@ -136,7 +143,7 @@ class ProviderHomeScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withValues(alpha: 0.2),
                             blurRadius: 20,
-                            offset: const Offset(0, 10),
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
@@ -237,12 +244,14 @@ class ProviderHomeScreen extends StatelessWidget {
                           Icons.search,
                           Colors.white,
                           const Color(0xFF1E293B),
+                          onTap: () => Get.toNamed(AppRoutes.providerBookingScreen),
                         ),
                         _buildActionButton(
                           "Inbox",
                           Icons.mail_outline,
                           Colors.white,
                           const Color(0xFF1E293B),
+                          onTap: () => Get.toNamed(AppRoutes.messagesScreen),
                         ),
                         _buildActionButton(
                           "Boost",
@@ -250,6 +259,9 @@ class ProviderHomeScreen extends StatelessWidget {
                           const Color(0xFF1E1E4B),
                           Colors.white,
                           isDark: true,
+                          onTap: () {
+                            // Boost logic
+                          },
                         ),
                       ],
                     ),
@@ -293,12 +305,12 @@ class ProviderHomeScreen extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 0.h),
+          child: const ProviderNavBar(currentIndex: 0),
+        ),
+        extendBody: true,
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        child: const ProviderNavBar(currentIndex: 0),
-      ),
-      extendBody: true,
     );
   }
 
@@ -374,8 +386,11 @@ class ProviderHomeScreen extends StatelessWidget {
     Color bg,
     Color contentColor, {
     bool isDark = false,
+    VoidCallback? onTap,
   }) {
-    return Column(
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
       children: [
         Container(
           height: 80.w,
@@ -410,8 +425,9 @@ class ProviderHomeScreen extends StatelessWidget {
           color: const Color(0xFF1E293B),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildActivityItem(Map<String, dynamic> activity) {
     IconData icon;

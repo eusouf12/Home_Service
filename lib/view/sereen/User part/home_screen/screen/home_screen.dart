@@ -334,11 +334,14 @@ class HomeScreen extends StatelessWidget {
                           debugPrint("Request clicked");
                         },
                         onTabViewProvider: () {
-                           Get.toNamed(AppRoutes.providerProfileScreen);
+                          Get.toNamed(AppRoutes.providerProfileScreen);
                         },
                         onTabAddFavourite: () {
-                           showCustomSnackBar("Provider Added to Favourite",isError: false);
-                           debugPrint("Add Favourite clicked");
+                          showCustomSnackBar(
+                            "Provider Added to Favourite",
+                            isError: false,
+                          );
+                          debugPrint("Add Favourite clicked");
                         },
                       );
                     },
@@ -391,12 +394,13 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final provider = controller.topTrending[index];
                     return TopTrendingCard(
-                      imageUrl: provider['imageUrl'], // Provide fallback if none
+                      imageUrl:
+                          provider['imageUrl'], // Provide fallback if none
                       onTabViewProvider: () {
-                         Get.toNamed(AppRoutes.providerProfileScreen);
+                        Get.toNamed(AppRoutes.providerProfileScreen);
                       },
                       onRequestTap: () {
-                         showCustomSnackBar("Request Clicked", isError: false);
+                        showCustomSnackBar("Request Clicked", isError: false);
                       },
                       isFastResponse: provider['fastResponse'] ?? false,
                       isAvailableNow: provider['availableNow'] ?? false,
@@ -404,7 +408,8 @@ class HomeScreen extends StatelessWidget {
                       name: provider['name'] ?? '',
                       distance: provider['distance'] ?? '',
                       travelDistance: provider['travelDistance'] ?? '',
-                      jobsCompleted: provider['jobsCompleted']?.toString() ?? '0',
+                      jobsCompleted:
+                          provider['jobsCompleted']?.toString() ?? '0',
                       rating: provider['rating']?.toString() ?? '0.0',
                       reviews: provider['reviews']?.toString() ?? '0',
                     );

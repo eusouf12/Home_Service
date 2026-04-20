@@ -25,8 +25,10 @@ import '../../view/sereen/User part/home_screen/screen/provider_profile_screen.d
 import '../../view/sereen/User part/home_screen/screen/gallery_screen.dart';
 import '../../view/sereen/User part/home_screen/screen/all_reviews_screen.dart';
 import '../../view/sereen/User part/user_profile/screen/saved_address_screen.dart';
+import '../../view/sereen/Provider Part/booking_screen/screen/provider_lead_details_screen.dart';
 import '../../view/sereen/Provider Part/onboarding_screen/screen/provider_onboarding_screen.dart';
 import '../../view/sereen/Provider Part/home Screen/screen/provider_home_screen.dart';
+import '../../view/sereen/Provider Part/booking_screen/screen/provider_booking_screen.dart';
 import '../../view/sereen/Provider Part/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
@@ -43,6 +45,9 @@ class AppRoutes {
   static const String chooseRole = "/ChooseRole";
   static const String providerOnboardingScreen = "/ProviderOnboardingScreen";
   static const String providerHomeScreen = "/ProviderHomeScreen";
+  static const String providerBookingScreen = "/ProviderBookingScreen";
+  static const String providerLeadDetailsScreen = "/ProviderLeadDetailsScreen";
+  static const String providerCompletedLeadDetailsScreen = "/ProviderCompletedLeadDetailsScreen";
 
   ///===========================User Part==========================
   static const String singleView = "/SingleView";
@@ -115,6 +120,9 @@ class AppRoutes {
     GetPage(name: logoutSuccessScreen, page: () => const LogoutSuccessScreen()),
     GetPage(name: providerOnboardingScreen, page: () => const ProviderOnboardingScreen()),
     GetPage(name: providerHomeScreen, page: () => const ProviderHomeScreen()),
+    GetPage(name: providerBookingScreen, page: () => const ProviderBookingScreen()),
+    GetPage(name: providerLeadDetailsScreen, page: () => const ProviderLeadDetailsScreen(isCompleted: false)),
+    GetPage(name: providerCompletedLeadDetailsScreen, page: () => const ProviderLeadDetailsScreen(isCompleted: true)),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
   ];
 }

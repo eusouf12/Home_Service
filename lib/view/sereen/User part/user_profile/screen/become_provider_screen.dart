@@ -21,7 +21,12 @@ class BecomeProviderScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Color(0xFF1E293B)),
           onPressed: () => Get.back(),
         ),
-        title: CustomText(text: "Become a Provider", fontSize: 16.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+        title: CustomText(
+          text: "Become a Provider",
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold,
+          color: const Color(0xFF1E293B),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -36,7 +41,9 @@ class BecomeProviderScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24.r),
                   image: const DecorationImage(
-                    image: NetworkImage("https://img.freepik.com/free-photo/side-view-man-holding-vacuum-cleaner_23-2149492196.jpg"),
+                    image: NetworkImage(
+                      "https://img.freepik.com/free-photo/side-view-man-holding-vacuum-cleaner_23-2149492196.jpg",
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -55,17 +62,20 @@ class BecomeProviderScreen extends StatelessWidget {
               _buildFeatureTile(
                 icon: Icons.people_outline,
                 title: "Reach more customers",
-                subtitle: "Connect with thousands of local clients searching for your expertise",
+                subtitle:
+                    "Connect with thousands of local clients searching for your expertise",
               ),
               _buildFeatureTile(
                 icon: Icons.access_time,
                 title: "Flexible working hours",
-                subtitle: "You are the boss. Work whenever you want, on your own terms",
+                subtitle:
+                    "You are the boss. Work whenever you want, on your own terms",
               ),
               _buildFeatureTile(
                 icon: Icons.payments_outlined,
                 title: "Earn income",
-                subtitle: "Secure direct payments and grow your professional business",
+                subtitle:
+                    "Secure direct payments and grow your professional business",
               ),
 
               SizedBox(height: 40.h),
@@ -96,7 +106,11 @@ class BecomeProviderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureTile({required IconData icon, required String title, required String subtitle}) {
+  Widget _buildFeatureTile({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+  }) {
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
       padding: EdgeInsets.all(16.w),
@@ -121,7 +135,12 @@ class BecomeProviderScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(text: title, fontSize: 13.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
+                CustomText(
+                  text: title,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xFF1E293B),
+                ),
                 SizedBox(height: 4.h),
                 CustomText(
                   text: subtitle,
